@@ -33,7 +33,6 @@ import ADMIN_DATA from '../data/admin-data';
                 const current_route = ADMIN_DATA.find( object => {
                     current_route_item =  object.items.find( item => {
                         if(item.link === current_route_link){
-                            debugger;
                             current_route_label = item.label;
                             return true;
                         }
