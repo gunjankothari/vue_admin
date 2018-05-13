@@ -1,0 +1,21 @@
+import AdminPage from '/';
+import HomePage from './pages/home';
+import GroupingPage from './pages/grouping'
+
+export default [{
+    path: '/admin',
+    name: 'Admin Settings',
+    component: AdminPage,
+    children: [{
+        path: '/',
+        component: HomePage,
+    }, {
+        path: 'grouping',
+        component: GroupingPage,
+        extra: "Extra"
+    }, {
+        path: 'users',
+        component: GroupingPage,
+        extra: "Extra"
+    }]
+}]

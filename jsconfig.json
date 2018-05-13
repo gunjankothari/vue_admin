@@ -1,0 +1,8 @@
+{
+    "include": [
+      "./src/**/*"
+    ],
+    "rules": {
+        "vue/html-self-closing": "on"
+      }
+  }
