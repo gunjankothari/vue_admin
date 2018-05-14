@@ -10,11 +10,11 @@
 
 <script>
 import * as _ from 'lodash';
-import BreadcrumbComponent from '../components/breadcrumb';
+import breadcrumb from '../components/breadcrumb';
 
     export default {
         components: {
-            'breadcrumb': BreadcrumbComponent
+            breadcrumb
         }
     }
 </script>

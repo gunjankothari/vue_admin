@@ -22,9 +22,9 @@
 import * as _ from 'lodash';
 import 'vue-awesome/icons';
 
-import SearchComponent from '../components/searchBox';
-import CardComponent from '../components/card';
-import BreadcrumbComponent from '../components/breadcrumb';
+import searchBox from '../components/searchBox';
+import adminCard from '../components/card';
+import breadcrumb from '../components/breadcrumb';
 import ADMIN_DATA from '../data/admin-data';
 
     export default {
@@ -35,9 +35,9 @@ import ADMIN_DATA from '../data/admin-data';
             }
         },
         components: {
-            'search-box': SearchComponent,
-            'admin-card': CardComponent,
-            'breadcrumb': BreadcrumbComponent
+            searchBox,
+            adminCard,
+            breadcrumb
         },
         computed: {
             filteredData() {

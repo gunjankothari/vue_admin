@@ -1,6 +1,7 @@
 import AdminPage from '/';
 import HomePage from './pages/home';
 import GroupingPage from './pages/grouping'
+import UsersPage from './pages/users';
 
 export default [{
     path: '/admin',
@@ -15,7 +16,7 @@ export default [{
         extra: "Extra"
     }, {
         path: 'users',
-        component: GroupingPage,
+        component: UsersPage,
         extra: "Extra"
     }]
 }]

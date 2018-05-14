@@ -31,11 +31,12 @@
 
 <style lang="scss" scoped>
     .tree-branch{
-        width: 333px;
+        width: 300px;
         border: 1px solid #E4EDF2;
         box-shadow: 0 6px 12px 0 rgba(86,108,118,0.05);
         border-radius: 6px 0 6px 6px;
         float: left;
+        min-width: 300px; 
 
         .card-header{
             background-color: transparent;

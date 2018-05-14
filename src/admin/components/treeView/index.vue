@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import TreeViewComponent from './treeView';
+import treeView from './treeViewCard';
     export default {
         data() {
             return {
@@ -14,7 +14,7 @@ import TreeViewComponent from './treeView';
         },
         props: ['data'],
         components:{
-            'tree-view': TreeViewComponent
+            treeView
         }, 
         methods:{
             itemClicked(params){
@@ -34,5 +34,6 @@ import TreeViewComponent from './treeView';
     .tree-wrapper{
         display: flex;
         align-items: flex-start;
+        overflow-x: scroll;
     }
 </style>

@@ -7,7 +7,7 @@
         </b-row>
         <b-row>
             <b-col>
-                <tree-view :data="group"></tree-view>
+                <tree-view-renderer :data="group"></tree-view-renderer>
             </b-col>
         </b-row>
     </b-container>
@@ -15,8 +15,8 @@
 
 <script>
 import * as _ from 'lodash';
-import BreadcrumbComponent from '../components/breadcrumb';
-import TreeViewRendererComponent from '../components/treeViewRenderer';
+import breadcrumb from '../components/breadcrumb';
+import treeViewRenderer from '../components/treeView/index';
 import GROUPING_DATA from '../data/grouping-data';
     export default {
         data() {
@@ -25,8 +25,8 @@ import GROUPING_DATA from '../data/grouping-data';
             }
         },
         components: {
-            'breadcrumb': BreadcrumbComponent,
-            'tree-view': TreeViewRendererComponent
+            breadcrumb,
+            treeViewRenderer
         }
     }
 </script>
