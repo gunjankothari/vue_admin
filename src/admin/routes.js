@@ -12,14 +12,9 @@ export default [{
         component: HomePage,
     }, {
         path: 'grouping',
-        component: GroupingPage,
-        extra: "Extra"
+        component: GroupingPage
     }, {
         path: 'users',
-        component: UsersPage,
-        extra: "Extra",
-        beforeEnter: (to, from, next) => {
-
-        }
+        component: UsersPage
     }]
 }]

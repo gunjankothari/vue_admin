@@ -65,7 +65,7 @@
         .content-wrapper {
             .full-width;
             .component-wrapper;
-            min-height: ~"calc(100vh - @{$headerHeight} - @{$footerHeight})";
+            min-height: ~"calc(100vh - @{headerHeight} - @{footerHeight})";
         }
         .right-panel-wrapper {
             .side-panels;
