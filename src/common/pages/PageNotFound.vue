@@ -39,7 +39,7 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
+<style lang="less" scoped>
   .page-not-found{
     margin-top: 100px; 
     text-align: center;

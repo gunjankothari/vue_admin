@@ -31,7 +31,7 @@ import GROUPING_DATA from '../data/grouping-data';
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
     .container-main {
         padding: 35px 80px;
         background: #fcfcfc;

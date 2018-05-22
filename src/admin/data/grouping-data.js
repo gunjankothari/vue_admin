@@ -14,7 +14,7 @@ export default [{
                     "child": []
                 }, {
                     "label": "Accounts",
-                    "child": []
+
                 }, {
                     "label": "Marketing",
                     "child": []

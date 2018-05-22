@@ -17,6 +17,9 @@ export default [{
     }, {
         path: 'users',
         component: UsersPage,
-        extra: "Extra"
+        extra: "Extra",
+        beforeEnter: (to, from, next) => {
+
+        }
     }]
 }]

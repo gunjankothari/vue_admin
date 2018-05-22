@@ -8,7 +8,7 @@
 export default{}
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .header{
     background: #fff;
     border-bottom: 1px solid #cfcfcf;

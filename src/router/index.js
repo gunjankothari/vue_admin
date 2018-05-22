@@ -5,6 +5,7 @@ import PageNotFound from '@/common/pages/PageNotFound'
 import AdminRoutes from '@/admin/routes'
 Vue.use(Router)
 export default new Router({
+
     routes: [
         ...AdminRoutes,
         {

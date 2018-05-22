@@ -22,8 +22,8 @@
     export default {}
 </script>
 
-<style scoped lang="scss">
-    @import './scss/index';
+<style scoped lang="less">
+    @import 'less/index';
     
     .container-wrapper {
         margin: 0;
@@ -31,21 +31,21 @@
         min-height: 100vh;
 
         .header-wrapper {
-            @include full-width;
-            @include component-wrapper;
-            height: $headerHeight;
+            .full-width;
+            .component-wrapper;
+            height: @headerHeight;
         }
         .footer-wrapper {
-            @include full-width;
-            @include component-wrapper;
-            height: $footerHeight;
+            .full-width;
+            .component-wrapper;
+            height: @footerHeight;
             background: #eee;
             z-index: 2;
         }
         .content-wrapper {
-            @include full-width;
-            @include component-wrapper;
-            min-height: calc(100vh - #{$headerHeight} - #{$footerHeight})
+            .full-width;
+            .component-wrapper;
+            min-height: ~"calc(100vh - @{$headerHeight} - @{$footerHeight})";
         }
     }
 </style>

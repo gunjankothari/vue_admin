@@ -7,7 +7,7 @@
         </div>
         <div class="right-panel-wrapper" :class="{ 'hidden': rightHidden }">
             <div class="right-handle" @click="hideRight">
-                <slot name="handle-icon"> < </slot>
+                <slot name="handle-icon"> &lt; </slot>
             </div>
             <slot name="left-panel">
                 <div class="no-content">Right Panel Component should come here.</div>
@@ -41,42 +41,43 @@
     }
 </script>
 
-<style scoped lang="scss">
+<style scoped lang="less" scoped>
     @import './scss/index';
     
     .container-wrapper {
         margin: 0;
         padding: 0;
         min-height: 100vh;
+
         .header-wrapper {
-            @include full-width;
-            @include component-wrapper;
-            height: $headerHeight;
+            .full-width;
+            .component-wrapper;
+            height: @headerHeight;
             background: #eee;
         }
         .footer-wrapper {
-            @include full-width;
-            @include component-wrapper;
-            height: $footerHeight;
+            .full-width;
+            .component-wrapper;
+            height: @footerHeight;
             background: #eee;
             z-index: 2
         }
         .content-wrapper {
-            @include full-width;
-            @include component-wrapper;
-            min-height: calc(100vh - #{$headerHeight} - #{$footerHeight})
+            .full-width;
+            .component-wrapper;
+            min-height: ~"calc(100vh - @{$headerHeight} - @{$footerHeight})";
         }
         .right-panel-wrapper {
-            @include side-panels;
-            @include component-wrapper;
+            .side-panels;
+            .component-wrapper;
             right: 0px;
 
             &.hidden{
-                right: -#{$panelWidth};
+                right: -~"@{$panelWidth}";
             }
         }
         .right-handle{
-            @include handle;
+            .handle;
             left: -30px;
             border-top-left-radius: 5px;
             border-bottom-left-radius: 5px;

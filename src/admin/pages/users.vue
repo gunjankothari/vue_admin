@@ -19,7 +19,7 @@ import breadcrumb from '../components/breadcrumb';
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
     .container-main {
         padding: 35px 80px;
         background: #fcfcfc;

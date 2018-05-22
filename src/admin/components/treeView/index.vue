@@ -18,7 +18,6 @@ import treeView from './treeViewCard';
         }, 
         methods:{
             itemClicked(params){
-                console.log("Item Clicked", params );
                 this.groups.splice(params.level,this.groups.length-params.level);
                 if(params.child.length)
                     this.groups.push(params.child);

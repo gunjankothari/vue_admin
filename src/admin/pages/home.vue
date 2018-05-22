@@ -62,7 +62,7 @@ import ADMIN_DATA from '../data/admin-data';
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
     .container-main {
         padding: 35px 80px;
         background: #fcfcfc;

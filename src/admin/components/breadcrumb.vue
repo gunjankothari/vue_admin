@@ -47,7 +47,7 @@ import ADMIN_DATA from '../data/admin-data';
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
     .breadcrumbs{
         list-style: none;
         display: flex;

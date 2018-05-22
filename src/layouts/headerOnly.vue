@@ -17,7 +17,7 @@
     export default {}
 </script>
 
-<style scoped lang="scss">
+<style scoped lang="less">
     @import './scss/index';
     
     .container-wrapper {
@@ -25,15 +25,15 @@
         padding: 0;
         min-height: 100vh;
         .header-wrapper {
-            @include full-width;
-            @include component-wrapper;
-            height: $headerHeight;
+            .full-width;
+            .component-wrapper;
+            height: @headerHeight;
             background: #eee;
         }
         .content-wrapper {
-            @include full-width;
-            @include component-wrapper;
-            min-height: calc(100vh - #{$headerHeight})
+            .full-width;
+            .component-wrapper;
+            min-height: ~"calc(100vh - @{$headerHeight})";
         }
     }
 </style>

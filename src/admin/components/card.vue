@@ -18,7 +18,7 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
     .card{
             min-height: 18rem;
             box-shadow: 0 6px 12px 0 rgba(86,108,118,0.05);
