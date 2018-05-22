@@ -77,14 +77,14 @@
         .content-wrapper {
             .full-width;
             .component-wrapper;
-            min-height: ~"calc(100vh - @{$headerHeight} - @{$footerHeight})";
+            min-height: ~"calc(100vh - @{headerHeight} - @{footerHeight})";
         }
         .left-panel-wrapper {
             .side-panels;
             .component-wrapper;
             left: 0px;
             &.hidden {
-                left : -~"@{$panelWidth}";
+                left : -~"@{panelWidth}";
             }
         }
         .right-panel-wrapper {
