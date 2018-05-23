@@ -12,6 +12,7 @@
     },
     "dependencies": {
         "@progress/kendo-dateinputs-vue-wrapper": "^2018.1.313",
+        "@progress/kendo-theme-bootstrap": "^2.13.4",
         "@progress/kendo-theme-default": "^2.52.2",
         "@progress/kendo-ui": "^2018.1.503",
         "bootstrap-vue": "^2.0.0-rc.9",

@@ -10,7 +10,6 @@
 </template>
 
 <script>
-    import 'vue-awesome/icons/search'
     export default {
         data() {
             return {
