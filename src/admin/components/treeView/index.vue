@@ -1,6 +1,13 @@
 <template>
     <div class="tree-wrapper">
-        <tree-view :data="group" :level="i" v-for="(group,i) in groups" :key="i" @itemClicked="itemClicked($event)"></tree-view>
+        <tree-view 
+            :data="group" 
+            :level="i" 
+            v-for="(group,i) in groups" :key="i" 
+            :levelTrack="levelTrack"
+            @itemClicked="itemClicked($event)"
+            :index="i"
+        ></tree-view>
     </div>
 </template>
 
@@ -9,7 +16,8 @@ import treeView from './treeViewCard';
     export default {
         data() {
             return {
-                groups: []
+                groups: [],
+                levelTrack: [0]
             }
         },
         props: ['data'],
@@ -18,9 +26,14 @@ import treeView from './treeViewCard';
         }, 
         methods:{
             itemClicked(params){
+                this.levelTrack.splice(params.level-1,this.levelTrack.length-(params.level-1))
+                this.levelTrack.push(params.index);
+
                 this.groups.splice(params.level,this.groups.length-params.level);
-                if(params.child.length)
+                if(params.child.length){
                     this.groups.push(params.child);
+                }
+                
             }
         },
         created(){
@@ -33,6 +46,6 @@ import treeView from './treeViewCard';
     .tree-wrapper{
         display: flex;
         align-items: flex-start;
-        overflow-x: scroll;
+        overflow-x: auto;
     }
 </style>

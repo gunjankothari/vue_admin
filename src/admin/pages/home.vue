@@ -21,17 +21,16 @@
 <script>
 import * as _ from 'lodash';
 import 'vue-awesome/icons';
+import { mapGetters } from 'vuex';
 
 import searchBox from '../components/searchBox';
 import adminCard from '../components/card';
 import breadcrumb from '../components/breadcrumb';
-import ADMIN_DATA from '../data/admin-data';
 
     export default {
         data() {
             return {
-                searchText: '',
-                cards: ADMIN_DATA
+                searchText: ''
             }
         },
         components: {
@@ -52,7 +51,10 @@ import ADMIN_DATA from '../data/admin-data';
                     });
                     return card.items.length > 0;
                 });
-            }
+            },
+            ...mapGetters([
+                'cards'
+            ])
         },
         methods:{
             searchHandler(value){
