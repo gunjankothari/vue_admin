@@ -42,7 +42,7 @@
 </script>
 
 <style scoped lang="less" scoped>
-    @import './scss/index';
+    @import './less/index';
     
     .container-wrapper {
         margin: 0;
@@ -73,7 +73,7 @@
             right: 0px;
 
             &.hidden{
-                right: -~"@{$panelWidth}";
+                right: -(@panelWidth);
             }
         }
         .right-handle{
