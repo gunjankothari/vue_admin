@@ -8,7 +8,7 @@ export default new Vuex.Store({
         users: [
             {
                 "UserName": "Rahul",
-                "Role": "Admin",
+                "Role": "Super Admin",
                 "AssignedGroups": "Sales",
                 "Status": true,
                 "Email": "rahul@motadata.com",
