@@ -58,7 +58,6 @@
         name: "usersInfoGrid",
         methods:{
             userGridSearch:function (ev) {
-                debugger;
 
                 var grid = $('#grid').data('kendoGrid');
                 var columns = grid.columns;
@@ -66,7 +65,6 @@
         },
         data () {
             return {
-
                 userNameTemplate: '<label class="switch" ><input type="checkbox" name="UserName" id="UserName" # if(Status){ # checked # } #  @click="CheckboxClick()"/><span class="slider round"></span><span class="grid-user">\#: UserName#\</span></label>',
             }
         },
