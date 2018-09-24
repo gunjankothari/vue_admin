@@ -1,7 +1,10 @@
 import AdminPage from '/';
 import HomePage from './pages/home';
-import GroupingPage from './pages/grouping'
-import UsersPage from './pages/users';
+
+// Lazy Loading Vue Components
+function loadView (view) {
+    return () => import(/* webpackChunkName: "view-[request]" */ `./pages/${view}.vue`)
+}
 
 export default [{
     path: '/admin',
@@ -12,9 +15,9 @@ export default [{
         component: HomePage,
     }, {
         path: 'grouping',
-        component: GroupingPage
+        component: loadView('grouping')
     }, {
         path: 'users',
-        component: UsersPage
+        component: loadView('users/users')
     }]
 }]

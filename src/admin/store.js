@@ -1,10 +1,12 @@
 import groupingData from "./data/grouping-data";
 import adminData from './data/admin-data';
+import usersStore from './pages/users/users-store';
 
 export default {
     store: {
         groupingData,
-        adminData
+        adminData,
+        usersStore
     },
     mutations: {
         ADD_GROUP_ITEM: (state, item) => {

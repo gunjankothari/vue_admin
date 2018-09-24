@@ -13,7 +13,9 @@
         "test-watch": "npm run test -- --watch --coverage"
     },
     "dependencies": {
+        "@progress/kendo-datasource-vue-wrapper": "^2018.3.911",
         "@progress/kendo-dateinputs-vue-wrapper": "^2018.1.313",
+        "@progress/kendo-grid-vue-wrapper": "^2018.3.911",
         "@progress/kendo-layout-vue-wrapper": "^2018.2.620",
         "@progress/kendo-theme-bootstrap": "^2.13.4",
         "@progress/kendo-theme-default": "^2.52.2",
