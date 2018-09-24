@@ -10,7 +10,7 @@
         "lint": "eslint --ext .js,.vue src",
         "build": "node build/build.js",
         "test": "jest",
-        "test-watch": "npm run test -- --watch"
+        "test-watch": "npm run test -- --watch --coverage"
     },
     "dependencies": {
         "@progress/kendo-dateinputs-vue-wrapper": "^2018.1.313",
@@ -20,6 +20,7 @@
         "@progress/kendo-ui": "^2018.1.503",
         "bootstrap-vue": "^2.0.0-rc.9",
         "es6-promise": "^4.2.4",
+        "jest-vue-preprocessor": "^1.4.0",
         "lodash": "^4.17.10",
         "vue": "^2.5.16",
         "vue-awesome": "^3.0.0",
@@ -106,12 +107,21 @@
         },
         "collectCoverage": true,
         "collectCoverageFrom": [
-            "**/*.{js,vue}",
-            "!**/node_modules/**"
+            "src/**/*.{js,vue}",
+            "!**/node_modules/**",
+            "!**/__tests__/**"
         ],
         "coverageReporters": [
             "html",
             "text-summary"
+        ],
+        "coveragePathIgnorePatterns": [
+            "/node_modules/",
+            "/__test__/"
+        ],
+        "coverageDirectory": "coverage",
+        "snapshotSerializers": [
+            "jest-serializer-vue"
         ]
     }
 }

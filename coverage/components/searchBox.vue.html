@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/admin/index.vue</title>
+    <title>Code coverage report for components/searchBox.vue</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../prettify.css" />
-    <link rel="stylesheet" href="../../base.css" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../sort-arrow-sprite.png);
+            background-image: url(../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../index.html">All files</a> / <a href="index.html">src/admin</a> index.vue
+      <a href="../index.html">All files</a> / <a href="index.html">components</a> searchBox.vue
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/3</span>
+        <span class='fraction'>0/2</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>0/2</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/3</span>
+        <span class='fraction'>0/2</span>
       </div>
     </div>
   </div>
@@ -73,8 +73,20 @@
 28
 29
 30
-31</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -89,8 +101,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -104,45 +130,58 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
-  &lt;main-layout&gt;
-    &lt;template slot="header"&gt;
-      &lt;header-component&gt;&lt;/header-component&gt;
-    &lt;/template&gt;
-    &lt;template slot="footer"&gt;
-      &lt;footer-component&gt;&lt;/footer-component&gt;
-    &lt;/template&gt;
-    &lt;template slot="content"&gt;
-        &lt;router-view /&gt;
-    &lt;/template&gt;
-  &lt;/main-layout&gt;
+    &lt;b-input-group size="md" class="mb-3 search-box"&gt;
+        &lt;b-form-input placeholder="Search..." v-model="searchText"&gt;&lt;/b-form-input&gt;
+        &lt;b-input-group-append&gt;
+            &lt;b-btn class="search-button" variant="primary" @click="search()"&gt;
+                &lt;icon class="icon-search" name="search" size="sm"&gt;&lt;/icon&gt;
+            &lt;/b-btn&gt;
+        &lt;/b-input-group-append&gt;
+    &lt;/b-input-group&gt;
 &lt;/template&gt;
 &nbsp;
 &lt;script&gt;
-<span class="cstat-no" title="statement not covered" >  import MainLayout from '@/layouts/sidebarRight';</span>
-<span class="cstat-no" title="statement not covered" >  import HeaderComponent from '@/common/components/header';</span>
-<span class="cstat-no" title="statement not covered" >  import FooterComponent from '@/common/components/footer';</span>
-&nbsp;
-  export default {
-    components: {
-      'main-layout': MainLayout,
-      'header-component': HeaderComponent,
-      'footer-component': FooterComponent,
+    export default {
+<span class="fstat-no" title="function not covered" >        data() {</span>
+<span class="cstat-no" title="statement not covered" >            return {</span>
+                searchText: this.value
+            }
+        },
+        methods: {
+<span class="fstat-no" title="function not covered" >            search(){</span>
+<span class="cstat-no" title="statement not covered" >                this.$emit('onSearch',this.searchText);</span>
+            }
+        }
     }
-  }
 &lt;/script&gt;
 &nbsp;
 &lt;style lang="less" scoped&gt;
+    .search-box{
+        box-shadow: 0 1px 4px 0 rgba(86,108,118,0.12);
+        border: none;
+&nbsp;
+        input{
+            border: none;
+        }
+    }
+    .search-button{
+        background-color: rgba(0,152,238,1);
+    }
+    .icon-search {
+        height: 12px;
+    }
 &lt;/style&gt;
+&nbsp;
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 10:22:04 GMT+0530 (IST)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 09:04:39 GMT+0530 (IST)
 </div>
 </div>
-<script src="../../prettify.js"></script>
+<script src="../prettify.js"></script>
 <script>
 window.onload = function () {
         if (typeof prettyPrint === 'function') {
@@ -150,6 +189,6 @@ window.onload = function () {
         }
 };
 </script>
-<script src="../../sorter.js"></script>
+<script src="../sorter.js"></script>
 </body>
 </html>

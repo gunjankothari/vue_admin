@@ -3,3 +3,4 @@
 /dist/
 /src/
 /*.js
+/__tests__

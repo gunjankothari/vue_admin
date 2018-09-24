@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/common/pages/HelloWorld.vue</title>
+    <title>Code coverage report for src/admin/data/admin-data.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../../index.html">All files</a> / <a href="index.html">src/common/pages</a> HelloWorld.vue
+      <a href="../../../index.html">All files</a> / <a href="index.html">src/admin/data</a> admin-data.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/1</span>
+        <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,18 +30,18 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/1</span>
+        <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/1</span>
+        <span class='fraction'>0/0</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -133,7 +133,18 @@
 88
 89
 90
-91</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -195,7 +206,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -223,97 +233,120 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
-  &lt;div class="hello"&gt;
-    &lt;h1&gt;{{ msg }}&lt;/h1&gt;
-    &lt;h2&gt;Essential Links&lt;/h2&gt;
-    &lt;ul&gt;
-      &lt;li&gt;
-        &lt;a href="https://vuejs.org" target="_blank"&gt;
-            Core Docs
-          &lt;/a&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;a href="https://forum.vuejs.org" target="_blank"&gt;
-            Forum
-          &lt;/a&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;a href="https://chat.vuejs.org" target="_blank"&gt;
-            Community Chat
-          &lt;/a&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;a href="https://twitter.com/vuejs" target="_blank"&gt;
-            Twitter
-          &lt;/a&gt;
-      &lt;/li&gt;
-      &lt;br&gt;
-      &lt;li&gt;
-        &lt;a href="http://vuejs-templates.github.io/webpack/" target="_blank"&gt;
-            Docs for This Template
-          &lt;/a&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-    &lt;h2&gt;Ecosystem&lt;/h2&gt;
-    &lt;ul&gt;
-      &lt;li&gt;
-        &lt;a href="http://router.vuejs.org/" target="_blank"&gt;
-            vue-router
-          &lt;/a&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;a href="http://vuex.vuejs.org/" target="_blank"&gt;
-            vuex
-          &lt;/a&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;a href="http://vue-loader.vuejs.org/" target="_blank"&gt;
-            vue-loader
-          &lt;/a&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;a href="https://github.com/vuejs/awesome-vue" target="_blank"&gt;
-            awesome-vue
-          &lt;/a&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-&nbsp;
-&lt;script&gt;
-export default {
-    name: 'HelloWorld',
-<span class="fstat-no" title="function not covered" >    data () {</span>
-<span class="cstat-no" title="statement not covered" >        return {</span>
-            msg: 'Welcome to Your Vue.js App'
-        }
-    }
-}
-&lt;/script&gt;
-&nbsp;
-&lt;!-- Add "scoped" attribute to limit CSS to this component only --&gt;
-&lt;style scoped&gt;
-  h1,
-  h2 {
-    font-weight: normal;
-  }
-&nbsp;
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-&nbsp;
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-&nbsp;
-  a {
-    color: #42b983;
-  }
-&lt;/style&gt;
-&nbsp;</pre></td></tr>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export default [{
+    id: 1,
+    header: "User Settings",
+    icon: "regular/user",
+    items: [{
+        label: "Users",
+        link: "users"
+    }, {
+        label: "Roles",
+        link: "roles"
+    }, {
+        label: "Password Settings",
+        link: "password-settings"
+    }]
+}, {
+    id: 2,
+    header: "Group Settings",
+    icon: "users",
+    items: [{
+        label: "Grouping",
+        link: "grouping"
+    }, {
+        label: "Data Security",
+        link: "data-security"
+    }]
+}, {
+    id: 3,
+    header: "Network Discovery Settings",
+    icon: "globe",
+    items: [{
+        label: "Credential Profiles",
+        link: "credential"
+    }, {
+        label: "Network Discovery Profile",
+        link: "network-discovery"
+    }]
+}, {
+    id: 4,
+    header: "Monitor Settings",
+    icon: "desktop",
+    items: [{
+        label: "Custom Fields",
+        link: "custom-fields"
+    }, {
+        label: "RPE Management",
+        link: "rpe-management"
+    }]
+}, {
+    id: 5,
+    header: "Policy Settings",
+    icon: "regular/file-alt",
+    items: [{
+        label: "Policies",
+        link: "policies"
+    }, {
+        label: "Severity",
+        link: "severity"
+    }]
+}, {
+    id: 6,
+    header: "System Settings",
+    icon: "cog",
+    items: [{
+        label: "System Reboot",
+        link: "system-reboot"
+    }, {
+        label: "Rebranding",
+        link: "rebranding"
+    }, {
+        label: "Notification(dnd)",
+        link: "notification"
+    }, {
+        label: "Licensing (trend since day one)",
+        link: "licence"
+    }, {
+        label: "Mail Server Configuration",
+        link: "mail-server-configuration"
+    }]
+}, {
+    id: 7,
+    header: "My Account Preferences",
+    icon: "user-secret",
+    items: [{
+        label: "Pagination",
+        link: "pagination"
+    }, {
+        label: "Date Format",
+        link: "date-format"
+    }, {
+        label: "Time Zone",
+        link: "time-zone"
+    }, {
+        label: "Theme",
+        link: "theme"
+    }, {
+        label: "Home Screen",
+        link: "mail-server-configuration"
+    }, {
+        label: "UI Preferences",
+        link: "ui-preferences"
+    }]
+}]</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
