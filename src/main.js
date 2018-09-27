@@ -8,9 +8,8 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import '@progress/kendo-ui'
 import '@progress/kendo-theme-default/dist/all.css'
+import '../motadata.css'
 import store from './store';
-import usersStore from './admin/pages/users/users-store';
-
 import App from './App'
 import router from './router'
 import './plugins'
@@ -23,6 +22,10 @@ import { DataSource,HierarchicalDataSource,GanttDataSource,
     TreeListDataSource,DataSourceInstaller } from '@progress/kendo-datasource-vue-wrapper'
 Vue.use(DataSourceInstaller)
 
+import { Button,ButtonGroup,ButtonGroupButton,ToolBar,
+    ToolBarItem,ButtonsInstaller } from '@progress/kendo-buttons-vue-wrapper'
+Vue.use(ButtonsInstaller)
+
 Vue.config.productionTip = false
 
 //Components
@@ -34,7 +37,6 @@ new Vue({
     el: '#app',
     router,
     store,
-    usersStore,
     components: { App },
     template: '<App/>'
 })
