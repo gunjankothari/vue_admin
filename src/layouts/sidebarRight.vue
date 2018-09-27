@@ -5,14 +5,14 @@
                 Header Should come here.
             </slot>
         </div>
-        <div class="right-panel-wrapper" :class="{ 'hidden': rightHidden }">
+      <!--  <div class="right-panel-wrapper" :class="{ 'hidden': rightHidden }">
             <div class="right-handle" @click="hideRight">
                 <slot name="handle-icon"> &lt; </slot>
             </div>
             <slot name="left-panel">
                 <div class="no-content">Right Panel Component should come here.</div>
             </slot>
-        </div>
+        </div>-->
         <div class="content-wrapper">
             <slot name="content">
                 <span class="no-content">Content Should come here.</span>
@@ -43,7 +43,7 @@
 
 <style scoped lang="less" scoped>
     @import './less/index';
-    
+
     .container-wrapper {
         margin: 0;
         padding: 0;

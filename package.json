@@ -13,7 +13,11 @@
         "test-watch": "npm run test -- --watch --coverage"
     },
     "dependencies": {
+        "@progress/kendo-buttons-vue-wrapper": "^2018.3.911",
+        "@progress/kendo-datasource-vue-wrapper": "^2018.3.911",
         "@progress/kendo-dateinputs-vue-wrapper": "^2018.1.313",
+        "@progress/kendo-grid-vue-wrapper": "^2018.3.911",
+        "@progress/kendo-inputs-vue-wrapper": "^2018.3.911",
         "@progress/kendo-layout-vue-wrapper": "^2018.2.620",
         "@progress/kendo-theme-bootstrap": "^2.13.4",
         "@progress/kendo-theme-default": "^2.52.2",
@@ -21,6 +25,7 @@
         "bootstrap-vue": "^2.0.0-rc.9",
         "es6-promise": "^4.2.4",
         "jest-vue-preprocessor": "^1.4.0",
+        "jszip": "^3.1.5",
         "lodash": "^4.17.10",
         "vue": "^2.5.16",
         "vue-awesome": "^3.0.0",
