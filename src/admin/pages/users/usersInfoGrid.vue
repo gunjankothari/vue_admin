@@ -28,7 +28,7 @@
             >
                 <kendo-grid-column :selectable="true" :width="35"></kendo-grid-column>
                 <kendo-grid-column :field="'UserName'"
-                                   :template="userNameTemplate"
+                                   :template="this.toggleTemplate()"
                                    :width="180"></kendo-grid-column>
                 <kendo-grid-column :field="'Role'"
                                    :width="140"></kendo-grid-column>
@@ -56,8 +56,7 @@
         data () {
             return {
                 tempStore : this.$store.state.usersStore.state.users,
-                searchUserText:'',
-                userNameTemplate: '<label class="switch" ><input type="checkbox"   @click="checkboxToggle()" # if(Status){ # checked # } # /><span class="slider round"></span><span class="grid-user">\#: UserName#\</span></label>',
+                searchUserText:''
             }
         },
         computed: {
@@ -68,10 +67,19 @@
             }
         },
         methods:{
-            userGridSearch:function () {
-
+            toggleTemplate(){
+                let template = 
+                    `<label class="switch" >
+                        <input type="checkbox" @click="checkboxToggle" />
+                        <span class="slider round"></span>
+                        <span class="grid-user">\#: UserName#\</span>
+                    </label>`;
+                let compiledTemplate = kendo.template(template);
+                return compiledTemplate.bind(this);
+                
+            },
+            userGridSearch() {
                 var searchText = this.searchUserText;
-
                 if(searchText != "" && searchText !=undefined) {
                     this.$store.state.usersStore.state.users = this.userGridFilter(searchText)
                 }
@@ -79,47 +87,22 @@
                     this.$store.state.usersStore.state.users = this.tempStore
                 }
             },
-            checkboxToggle : function(dataItem)
-            {
+            checkboxToggle(dataItem){
                 //TODO Grid checkbox template event binding not working
-              alert("Rahul")
+              console.log("Checkbox Toggle !!!")
             },
-            userGridFilter:function (searchText) {
-
-                var newArray=[];
-                var users = this.tempStore.map( user => {
-
-                    var flag = false;
-
-                    if(user.UserName.toLowerCase().indexOf(searchText.toLowerCase())>-1){
-                        flag = true;
-                    }
-                    else if(user.Role.toLowerCase().indexOf(searchText.toLowerCase())>-1){
-                        flag = true;
-                    }
-                    else if(user.AssignedGroups.toLowerCase().indexOf(searchText.toLowerCase())>-1){
-                        flag = true;
-                    }
-                    else if(user.Email.toLowerCase().indexOf(searchText.toLowerCase())>-1){
-                        flag = true;
-                    }
-                    else if(user.Description.toLowerCase().indexOf(searchText.toLowerCase())>-1){
-                        flag = true;
-                    }
-                    else {
-                        flag = false;
-                    }
-                    if(flag){
-                        newArray.push(user);
-                    }
+            userGridFilter(searchText) {
+                const searchCriteria = ['UserName', 'Role', 'AssignedGroups', 'Email', 'Description'];
+                const searchTextLower = searchText.toLowerCase();
+                return this.tempStore.filter( user => {
+                    return searchCriteria.some( field => {
+                        return user[field].toLowerCase().indexOf(searchTextLower) > -1
+                    });
                 });
-                return newArray;
             }
         }
     }
-
 </script>
 
 <style lang="less" scoped>
-
 </style>
