@@ -6,7 +6,7 @@
                     Sidebar
                 </div>
             </b-col>
-            <b-col cols="12" sm="9" lg="10"> 
+            <b-col cols="12" sm="9" lg="10">
                 <b-row>
                     <b-col>
                         <breadcrumb></breadcrumb>
@@ -14,10 +14,10 @@
                 </b-row>
                 <b-row>
                     <b-col>
-                        <users-info-grid></users-info-grid>
+                        <users-info-grid :users="users" :tempUserInfo="tempUserInfo"></users-info-grid>
                     </b-col>
                 </b-row>
-            </b-col>            
+            </b-col>
         </b-row>
     </b-container>
 </template>
@@ -30,7 +30,14 @@ import UsersInfoGrid from './usersInfoGrid'
         components: {
             breadcrumb,
             UsersInfoGrid
+        },
+        data: function () {
+            return {
+                users: this.$store.state.usersStore.state.users,
+                tempUserInfo: this.$store.state.usersStore.state.users
+            }
         }
+
     }
 </script>
 
@@ -43,4 +50,5 @@ import UsersInfoGrid from './usersInfoGrid'
         width: 300px;
         background: #eee;
     }
+
 </style>

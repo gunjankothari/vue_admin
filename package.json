@@ -22,6 +22,7 @@
         "@progress/kendo-theme-bootstrap": "^2.13.4",
         "@progress/kendo-theme-default": "^2.52.2",
         "@progress/kendo-ui": "^2018.1.503",
+        "@progress/kendo-window-vue-wrapper": "^2018.3.911",
         "bootstrap-vue": "^2.0.0-rc.9",
         "es6-promise": "^4.2.4",
         "jest-vue-preprocessor": "^1.4.0",
