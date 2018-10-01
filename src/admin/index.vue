@@ -13,7 +13,7 @@
 </template>
 
 <script>
-  import MainLayout from '@/layouts/sidebarRight';
+  import MainLayout from '@/layouts/noSidebar';
   import HeaderComponent from '@/common/components/header';
   import FooterComponent from '@/common/components/footer';
 

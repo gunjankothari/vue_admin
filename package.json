@@ -117,7 +117,7 @@
         "moduleNameMapper": {
             "^@/(.*)$": "<rootDir>/src/$1"
         },
-        "transformIgnorePatterns":[
+        "transformIgnorePatterns": [
             "/node_modules(?![\\\\/]vue-awesome[\\\\/])/"
         ],
         "collectCoverage": true,
