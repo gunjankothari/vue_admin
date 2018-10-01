@@ -20,7 +20,6 @@
 
 <script>
 import * as _ from 'lodash';
-import 'vue-awesome/icons';
 import { mapGetters } from 'vuex';
 
 import searchBox from '../components/searchBox';
@@ -52,9 +51,9 @@ import breadcrumb from '../components/breadcrumb';
                     return card.items.length > 0;
                 });
             },
-            ...mapGetters([
-                'cards'
-            ])
+            ...mapGetters({
+                'cards':'cards'
+            })
         },
         methods:{
             searchHandler(value){

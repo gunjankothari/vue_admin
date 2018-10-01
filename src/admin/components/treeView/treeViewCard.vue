@@ -14,14 +14,14 @@
                     <span class="action-item remove" @click="hideAddNew()"><icon name="times" size="sm" scale="0.7"></icon></span>
                     <span class="action-item add" @click="addNew()"><icon name="check" size="sm" scale="0.7" ></icon></span>
                 </li>
-                <kendo-contextmenu target="has-context-menu">
+                <!-- <kendo-contextmenu target="has-context-menu">
                     <li>Rename</li>
                     <li>Delete</li>
                     <li>Lock / Unlock</li>
                     <li>Data Security</li>
                     <li>Monitor Count</li>
                     <li>User Count</li>
-                </kendo-contextmenu>
+                </kendo-contextmenu> -->
             </ul>
         </div>
     </b-card>
@@ -29,47 +29,45 @@
 
 <script>
 import Vue from 'vue'
-import { LayoutInstaller } from '@progress/kendo-layout-vue-wrapper';
 import { mapMutations } from 'vuex';
 
-Vue.use(LayoutInstaller);
-    export default {
-        props: ['data', 'level', 'levelTrack', 'index'],
-        data() {
-            return {
-                showNewInput: false
-            }
+export default {
+    props: ['data', 'level', 'levelTrack', 'index'],
+    data() {
+        return {
+            showNewInput: false
+        }
+    },
+    methods:{
+        ...mapMutations([
+            'ADD_GROUP_ITEM'
+        ]),
+        itemClicked(item, index){
+            this.$emit('itemClicked',{ 
+                child: item.child, 
+                level: this.level+1,
+                index
+            });
         },
-        methods:{
-            ...mapMutations([
-                'ADD_GROUP_ITEM'
-            ]),
-            itemClicked(item, index){
-                this.$emit('itemClicked',{ 
-                    child: item.child, 
-                    level: this.level+1,
-                    index
-                });
-            },
-            showAddNew(){
-                this.showNewInput = true;
-                setTimeout(()=>{
-                    document.getElementById('newInput').focus();
-                })
-            },
-            hideAddNew(){
-                this.showNewInput = false;
-            },
-            addNew(){
-                this.ADD_GROUP_ITEM({ 
-                     label: document.getElementById('newInput').value,
-                     levels: [...this.levelTrack],
-                     addAtLevel: this.index
-                });
-                this.hideAddNew();
-            }
+        showAddNew(){
+            this.showNewInput = true;
+            setTimeout(()=>{
+                document.getElementById('newInput').focus();
+            })
         },
-    }
+        hideAddNew(){
+            this.showNewInput = false;
+        },
+        addNew(){
+            this.ADD_GROUP_ITEM({ 
+                    label: document.getElementById('newInput').value,
+                    levels: [...this.levelTrack],
+                    addAtLevel: this.index
+            });
+            this.hideAddNew();
+        }
+    },
+}
 </script>
 
 <style lang="scss" scoped>

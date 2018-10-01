@@ -13,9 +13,14 @@
 </template>
 
 <script>
-    export default {
-        props:['data']
+import { Icon } from 'vue-awesome';
+
+export default {
+    props:['data'],
+    components: {
+        'icon': Icon
     }
+}
 </script>
 
 <style lang="less" scoped>
@@ -31,7 +36,7 @@
                 font-weight: bold;
                 color: rgba(110,119,132,1);
                 display: flex;
-                
+
                 .title{
                     margin-left: 1rem;
                 }
@@ -53,7 +58,7 @@
                             color: #13688C;
                             font-size: 14px;
                             text-decoration: none;
-                            letter-spacing: 0.3px;                            
+                            letter-spacing: 0.3px;
                         }
                     }
                 }

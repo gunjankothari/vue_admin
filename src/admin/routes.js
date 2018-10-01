@@ -1,4 +1,4 @@
-import AdminPage from '/';
+import AdminPage from './index.vue';
 import HomePage from './pages/home';
 import GroupingPage from './pages/grouping'
 import UsersPage from './pages/users';
