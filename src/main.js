@@ -6,8 +6,9 @@ import 'es6-promise/auto';
 import Icon from 'vue-awesome/components/Icon'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import '@progress/kendo-ui'
+import '@progress/kendo-theme-default/dist/all.css'
 import store from './store';
-
 import App from './App'
 import router from './router'
 import './plugins'
