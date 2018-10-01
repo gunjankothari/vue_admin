@@ -5,7 +5,7 @@
                 Header Should come here.
             </slot>
         </div>
-        <div class="right-panel-wrapper" :class="{ 'hidden': rightHidden }">
+      <div class="right-panel-wrapper" :class="{ 'hidden': rightHidden }">
             <div class="right-handle" @click="hideRight">
                 <slot name="handle-icon"> &lt; </slot>
             </div>
@@ -43,7 +43,7 @@
 
 <style scoped lang="less" scoped>
     @import './less/index';
-    
+
     .container-wrapper {
         margin: 0;
         padding: 0;
