@@ -12,7 +12,7 @@
         </b-row>
         <b-row>
             <b-col lg="3" md="6" sm="12" class="mb-4" v-for="(card, key) in filteredData" :key="key">
-                <admin-card :data="card"></admin-card>
+                <admin-card :data="card" :searchText="searchText"></admin-card>
             </b-col>
         </b-row>
     </b-container>
@@ -20,7 +20,6 @@
 
 <script>
 import * as _ from 'lodash';
-import 'vue-awesome/icons';
 import { mapGetters } from 'vuex';
 
 import searchBox from '../components/searchBox';
@@ -52,9 +51,9 @@ import breadcrumb from '../components/breadcrumb';
                     return card.items.length > 0;
                 });
             },
-            ...mapGetters([
-                'cards'
-            ])
+            ...mapGetters({
+                'cards':'cards'
+            })
         },
         methods:{
             searchHandler(value){

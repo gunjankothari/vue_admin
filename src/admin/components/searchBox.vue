@@ -1,15 +1,17 @@
 <template>
     <b-input-group size="md" class="mb-3 search-box">
-        <b-form-input placeholder="Search..." v-model="searchText"></b-form-input>
-        <b-input-group-append>
+        <b-form-input placeholder="Search..." v-model="searchText" @input="search()"></b-form-input>
+        <!-- <b-input-group-append>
             <b-btn class="search-button" variant="primary" @click="search()">
                 <icon class="icon-search" name="search" size="sm"></icon>
             </b-btn>
-        </b-input-group-append>
+        </b-input-group-append> -->
     </b-input-group>
 </template>
 
 <script>
+import { Icon } from 'vue-awesome';
+
     export default {
         data() {
             return {
@@ -20,6 +22,9 @@
             search(){
                 this.$emit('onSearch',this.searchText);
             }
+        },
+        components: {
+            'icon': Icon
         }
     }
 </script>

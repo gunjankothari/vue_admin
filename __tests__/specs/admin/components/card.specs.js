@@ -1,14 +1,23 @@
+import {
+    shallowMount,
+    createLocalVue
+} from '@vue/test-utils'
 import VueRouter from 'vue-router'
-import { shallowMount, createLocalVue } from '@vue/test-utils'
+import BootstrapVue from 'bootstrap-vue';
 
 import Card from '@/admin/components/card'
 
+const localVue = createLocalVue();
+
+localVue.use(VueRouter);
+localVue.use(BootstrapVue);
+
 describe('Component', () => {
-    let localVue, wrapper, router
-    beforeEach(() => {
-        localVue = createLocalVue()
-        localVue.use(VueRouter)
+    let wrapper, router
+    beforeEach(() => {        
+        
         router = new VueRouter()
+
         wrapper = shallowMount(Card, {
             localVue,
             router,

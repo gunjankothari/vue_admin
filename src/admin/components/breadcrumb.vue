@@ -8,43 +8,44 @@
 
 <script>
 
-import ADMIN_DATA from '../data/admin-data';
-    export default {
-        computed:{
-            currentRoute(){
-                return this.$route.matched.map( route => { 
-                    return{
-                        'label': this.getRouteLabel(route),
-                        'link': route.path 
-                    }    
-                })
-            }
-        },
-        methods: {
-            getRouteLabel(route){
-                const routeLinks = route.path.split('/');
-                const current_route_link = routeLinks[routeLinks.length -1];
-                
-                if(current_route_link === 'admin' || current_route_link === '')
-                    return route.name;
+import ADMIN_DATA from '../data/admin-data.js';
+export default {
+    computed:{
+        currentRoute(){        
+            return this.$route.matched.map( route => { 
+                return{
+                    'label': this.getRouteLabel(route),
+                    'link': route.path 
+                }    
+            })
+        }
+    },
+    methods: {
+        getRouteLabel(route){
+            const routeLinks = route.path.split('/');
+            const current_route_link = routeLinks[routeLinks.length -1];
+            
+            if(current_route_link === 'admin' || current_route_link === '')
+                return route.name;
 
-                let current_route_item,
-                    current_route_label;
-                const current_route = ADMIN_DATA.find( object => {
-                    current_route_item =  object.items.find( item => {
-                        if(item.link === current_route_link){
-                            current_route_label = item.label;
-                            return true;
-                        }
-                        return false;
-                    });
-                    return current_route_item ? true : false;
+            debugger;
+            let current_route_item,
+                current_route_label;
+            const current_route = ADMIN_DATA.find( object => {
+                current_route_item =  object.items.find( item => {
+                    if(item.link === current_route_link){
+                        current_route_label = item.label;
+                        return true;
+                    }
+                    return false;
                 });
+                return current_route_item ? true : false;
+            });
 
-                return `${current_route.header} / ${current_route_label}`;
-            }
+            return `${current_route.header} / ${current_route_label}`;
         }
     }
+}
 </script>
 
 <style lang="less" scoped>
