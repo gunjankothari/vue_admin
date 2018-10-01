@@ -6,7 +6,9 @@
         </template>
         <div class="card-items">
             <ul>
-                <li v-for="(item, index) in data.items" :key="index"><router-link :to="{ path: item.link }" append>{{ item.label }}</router-link></li>
+                <li v-for="(item, index) in data.items" :key="index" :class="{ 'shouldHighlight': shouldHighlight(item.label) }">
+                    <router-link :to="{ path: item.link }" append v-html="formatLabel(item.label)"></router-link>
+                </li>
             </ul>
         </div>
     </b-card>
@@ -16,9 +18,34 @@
 import { Icon } from 'vue-awesome';
 
 export default {
-    props:['data'],
+    name: "adminCard",
+    props:['data', 'searchText'],
+    computed: {
+        searchRegex(){
+            return new RegExp("^"+this.searchText)
+        }
+    },
     components: {
         'icon': Icon
+    },
+    methods: {        
+        shouldHighlight(str){
+            return !!this.searchText && this.searchRegex.test(str) 
+        },
+        formatLabel(str){
+            if(!this.searchText){
+                return str;
+            }
+            const searchMatch = str.match(this.searchRegex);
+            if(!searchMatch){
+                return str;
+            }
+            const matchStartPosition = searchMatch.index;
+            const matchEndPosition = matchStartPosition + searchMatch[0].toString().length;
+            const originalText = str.substring(matchStartPosition, matchEndPosition);
+            console.log(originalText);
+            return str.replace(this.searchRegex, `<b>${originalText}</b>`);
+        }
     }
 }
 </script>
@@ -42,7 +69,8 @@ export default {
                 }
             }
             .card-body{
-                padding-top: 0;
+                padding: 0;
+
             }
             .card-items{
                 ul{
@@ -51,7 +79,7 @@ export default {
                     margin-bottom: 0px;
 
                     li{
-                        padding: 0.5rem 0;
+                        padding: 0.5rem 1rem;
 
                         a {
                             font-family: 'Lato', sans-serif;
@@ -61,6 +89,9 @@ export default {
                             letter-spacing: 0.3px;
                         }
                     }
+                }
+                .shouldHighlight{
+                    background-color: #ddefff;
                 }
             }
         }
