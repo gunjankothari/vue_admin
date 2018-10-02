@@ -48,7 +48,7 @@
                                    :width="150"></kendo-grid-column>
             </kendo-grid>
         </div>
-        <users-edit-window :username="username" :role="role" :assignedgroups="assignedgroups" :email="email" :description="description" :isuserenable="userenable"></users-edit-window>
+        <users-edit-window :username="username" ></users-edit-window>
     </div>
 
 </template>
@@ -67,12 +67,7 @@
             return {
                 searchUserText:'',
                 usersInfo : this.users,
-                email:'',
                 username:'',
-                role:'',
-                userenable:true,
-                assignedgroups:'',
-                description:''
             }
         },
         mounted() {
@@ -95,13 +90,7 @@
             editButtonClick: function(ev){
 
                 var tr = ev.target.parentElement.parentElement;
-                this.userenable = tr.cells[1].firstElementChild.firstElementChild.checked;
                 this.username = tr.cells[1].firstChild.innerText;
-                this.role = tr.cells[2].innerText;
-                this.assignedgroups = tr.cells[3].innerText;
-                this.email = tr.cells[4].innerText;
-                this.description = tr.cells[5].innerText;
-
                 var window = this.$children[3].$refs.windowRef.kendoWidget();
                 window.setOptions({title: this.username})
                 window.open();
