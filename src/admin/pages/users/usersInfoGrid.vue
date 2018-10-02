@@ -102,7 +102,7 @@
     }
 </script>
 
-<style type="text/css" >
+<style lang="less" >
     .k-grid-toolbar {
         text-align: right;
     }
