@@ -15,22 +15,20 @@
 </template>
 
 <script>
-import { Icon } from 'vue-awesome';
+
 
 export default {
-    name: "adminCard",
+
     props:['data', 'searchText'],
     computed: {
         searchRegex(){
             return new RegExp("^"+this.searchText)
         }
     },
-    components: {
-        'icon': Icon
-    },
-    methods: {        
+
+    methods: {
         shouldHighlight(str){
-            return !!this.searchText && this.searchRegex.test(str) 
+            return !!this.searchText && this.searchRegex.test(str)
         },
         formatLabel(str){
             if(!this.searchText){
