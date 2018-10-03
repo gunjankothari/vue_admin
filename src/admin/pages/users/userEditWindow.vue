@@ -10,9 +10,10 @@
                   :actions="actions"
                   :width="'500px'"
                   :height="'660px'"
-                  :title="'Window title'"
+                  :title="''"
                    style="display:none"
                   :activate="onWindowOpen"
+                  :deactivate="onWindowClose"
     >
         <b-container fluid class="container-main">
             <b-row>
@@ -160,6 +161,15 @@
                 document.querySelector("a[aria-label = 'Delete']").onclick = this.userWindowDeleteButtonClick
 
             },
+           onWindowClose:function(){
+
+               this.actions = ['Edit','Delete','Close']
+               this.isEdit = false
+               var current = this
+               setTimeout(function() {
+                   document.querySelector("a[aria-label = 'Edit']").onclick = current.userWindowEditButtonClick
+               }, 1000);
+           },
             setUserData:function(user){
 
                     this.email=user[0].email
@@ -172,6 +182,7 @@
                     this.usernm = user[0].username
             },
             userWindowEditButtonClick:function(ev){
+
                 this.actions = ['Save','Delete','Close']
                 this.isEdit = true
                 var current = this;
@@ -180,6 +191,7 @@
                 }, 1000);
             },
            userWindowSaveButtonClick: function() {
+                debugger
                this.actions = ['Edit','Delete','Close']
                this.isEdit = false
                var current = this

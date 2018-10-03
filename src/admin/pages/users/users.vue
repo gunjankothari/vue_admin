@@ -9,7 +9,31 @@
             <div class="d-none d-sm-flex flex-row">
                 <div class="sidebar d-flex p-0">
                     <div class="sidebar-wrapper flex-grow-1 " :class="{ hidden: hideSidebar }" >
-                        
+                        <h5>User Group +</h5>
+                        <b-container fluid class="container-main" >
+                            <b-row>
+                                <b-col lg="12" md="12" sm="12" >
+                                    <b-input-group size="md" class="mb-3 search-box " >
+                                        <b-form-input id="search-textbox" placeholder="Search dashboard " ></b-form-input>
+                                    </b-input-group>
+                                </b-col>
+                            </b-row>
+                            <b-row>
+                                <b-col lg="12" md="12" sm="12" >
+                                 <label><router-link :to="{ path: '/admin/users' }" replace>System User(14)</router-link> </label>
+                                </b-col>
+                            </b-row>
+                            <b-row>
+                                <b-col lg="12" md="12" sm="12" >
+                                    <label><router-link :to="{ path: '/admin/users' }" replace>LDAP User(23)</router-link></label>
+                                </b-col>
+                            </b-row>
+                            <b-row>
+                                <b-col lg="12" md="12" sm="12" >
+                                    <label><router-link :to="{ path: '/admin/users' }" replace>Radis User(4)</router-link></label>
+                                </b-col>
+                            </b-row>
+                        </b-container>
                     </div>
                     <div class="sidebar-opener align-self-start" @click="toggleSidebar()">
                         <icon name="angle-right" size="md" scale="1.5"></icon>
@@ -52,7 +76,7 @@ import UsersInfoGrid from './usersInfoGrid'
         background: #fcfcfc;
     }
     .sidebar{
-        //height: 100vh;        
+        //height: 100vh;
     }
     .sidebar-wrapper{
         background-color: #fff;
@@ -61,7 +85,7 @@ import UsersInfoGrid from './usersInfoGrid'
         width: 240px;
 
         &.hidden{
-            width: 0;
+            display: none;
         }
     }
     .sidebar-opener {
