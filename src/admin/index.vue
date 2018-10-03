@@ -21,7 +21,7 @@
     components: {
       'main-layout': MainLayout,
       'header-component': HeaderComponent,
-      'footer-component': FooterComponent,
+      'footer-component': FooterComponent, 
     }
   }
 </script>

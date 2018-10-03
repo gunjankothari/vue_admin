@@ -15,7 +15,7 @@ export default {
             return this.$route.matched.map( route => { 
                 return{
                     'label': this.getRouteLabel(route),
-                    'link': route.path 
+                    'link': route.path
                 }    
             })
         }

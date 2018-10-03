@@ -9,7 +9,7 @@
                 </b-col>
             </b-row>
         </b-container>
-        <div id="vueapp" class="vue-app" >
+        <div>
             <kendo-datasource ref="localDataSource" :data="usersInfo">
             </kendo-datasource>
 
@@ -43,62 +43,31 @@
                                    :width="220" ></kendo-grid-column>
 
                 <kendo-grid-column :text="'Actions'"
-                                   :command="[{name: 'Edit', click: editButtonClick},{name: 'Delete', click: deleteButtonClick}]"
+                                   :command="['edit', 'destroy']"
                                    :title="'Actions'"
                                    :width="150"></kendo-grid-column>
             </kendo-grid>
         </div>
-        <users-edit-window :username="username" ></users-edit-window>
     </div>
 
 </template>
 
 <script>
-    import UsersEditWindow from './userEditWindow'
-
     import JsZip from 'jszip';
     window.JSZip = JsZip;
     export default {
         props: ['users','tempUserInfo'],
-        components: {
-            UsersEditWindow
-        },
         data () {
             return {
                 searchUserText:'',
-                usersInfo : this.users,
-                username:'',
+                usersInfo : this.users
             }
         },
-        mounted() {
-              var inputs ,index;
-
-              inputs = document.getElementsByClassName('user-status').length;
-
-              for (index = 0; index < inputs; ++index) {
-                    document.getElementsByClassName('user-status')[index].onclick = this.checkboxToggle
-              }
-
-        },
         methods:{
-
-            deleteButtonClick:function(ev){
-                var tr = ev.target.parentElement.parentElement;
-
-                alert("Deleting "+tr.cells[1].firstChild.innerText +" User")
-            },
-            editButtonClick: function(ev){
-
-                var tr = ev.target.parentElement.parentElement;
-                this.username = tr.cells[1].firstChild.innerText;
-                var window = this.$children[3].$refs.windowRef.kendoWidget();
-                window.setOptions({title: this.username})
-                window.open();
-            },
             toggleTemplate(){
                 let template =
                     `<label class="switch" >
-                        <input type="checkbox" class="user-status"  # if(Status){ # checked # } # />
+                        <input type="checkbox" @click="checkboxToggle" # if(Status){ # checked # } # />
                         <span class="slider round"></span>
                         <span class="grid-user">\#: UserName#\</span>
                     </label>`;
@@ -116,9 +85,9 @@
                     this.usersInfo = this.tempUserInfo
                 }
             },
-            checkboxToggle(){
+            checkboxToggle(dataItem){
                 //TODO Grid checkbox template event binding not working
-                alert("Checkbox Toggle !!!")
+                console.log("Checkbox Toggle !!!")
             },
             userGridFilter(searchText) {
                 const searchCriteria = ['UserName', 'Role', 'AssignedGroups', 'Email', 'Description'];
@@ -133,14 +102,11 @@
     }
 </script>
 
-<style lang="less" >
+<style type="text/css" >
     .k-grid-toolbar {
-        position: absolute;
-        right: 20px;
         text-align: right;
-        max-width: 81px;
-        top: -59px;
     }
+
     .grid-user{
         position: relative;
         left: 63px;
@@ -214,4 +180,6 @@
     .k-grid-header{
         font-weight: bold !important;
     }
+
+
 </style>

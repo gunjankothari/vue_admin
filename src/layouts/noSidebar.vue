@@ -1,11 +1,11 @@
 <template>
-    <div class="container-wrapper">
+    <div class="container-wrapper d-flex flex-column">
         <div class="header-wrapper">
             <slot name="header">
                 Header Should come here.
             </slot>
         </div>
-        <div class="content-wrapper">
+        <div class="content-wrapper flex-grow-1">
             <slot name="content">
                 Content Should come here.
             </slot>

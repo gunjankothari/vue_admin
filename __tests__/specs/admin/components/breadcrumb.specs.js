@@ -4,7 +4,6 @@ import {
 } from '@vue/test-utils'
 import Router from 'vue-router'
 import Breadcrumb from '@/admin/components/breadcrumb'
-import routes from '@/router/routes.js';
 
 describe('Breadcrumb Component', () => {
     it('Breadcrumb is a Vue instance', () => {
