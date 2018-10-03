@@ -15,7 +15,7 @@
                         <icon name="angle-right" size="md" scale="1.5"></icon>
                     </div>
                 </div>
-                <div class="ml-3">
+                <div class="ml-3 w-100">
                     <users-info-grid :users="users" :tempUserInfo="tempUserInfo"></users-info-grid>
                 </div>
             </div>
