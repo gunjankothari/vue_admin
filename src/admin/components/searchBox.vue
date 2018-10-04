@@ -10,8 +10,6 @@
 </template>
 
 <script>
-import { Icon } from 'vue-awesome';
-
     export default {
         data() {
             return {
@@ -22,9 +20,6 @@ import { Icon } from 'vue-awesome';
             search(){
                 this.$emit('onSearch',this.searchText);
             }
-        },
-        components: {
-            'icon': Icon
         }
     }
 </script>

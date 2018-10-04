@@ -2,7 +2,12 @@
     <div>
         <b-container fluid class="container-main">
             <b-row>
-                <b-col lg="2" md="9" sm="9" class="col-xs-12 col-sm-6 col-md-3 example-col">
+                <b-col lg="12" md="9" sm="9">
+                    Showing {{userCount}} users of LDAP Users Group
+                </b-col>
+            </b-row><br>
+            <b-row>
+                <b-col lg="2" md="9" sm="9" class="col-xs-12 col-sm-6 col-md-3 example-col" style="padding-left: 0;">
                     <b-input-group size="md" class="mb-3 search-box " >
                         <b-form-input id="search-textbox" placeholder="Search users..." v-model="searchUserText" @keyup.native="userGridSearch()"></b-form-input>
                     </b-input-group>
@@ -43,55 +48,90 @@
                                    :width="220" ></kendo-grid-column>
 
                 <kendo-grid-column :text="'Actions'"
-                                   :command="[{name: 'Edit', click: editButtonClick},{name: 'Delete', click: deleteButtonClick}]"
+                                   :command="[{name: 'Edit', text:'Edit' ,click: editButtonClick},{name: 'Delete',text:'Delete', click: deleteButtonClick}]"
                                    :title="'Actions'"
                                    :width="150"></kendo-grid-column>
             </kendo-grid>
         </div>
-        <users-edit-window :username="username" ></users-edit-window>
+
     </div>
 
 </template>
 
 <script>
-    import UsersEditWindow from './userEditWindow'
 
     import JsZip from 'jszip';
     window.JSZip = JsZip;
     export default {
         props: ['users','tempUserInfo'],
-        components: {
-            UsersEditWindow
-        },
         data () {
             return {
                 searchUserText:'',
                 usersInfo : this.users,
                 username:'',
+                userCount:0
             }
         },
         mounted() {
+            this.userCount=this.usersInfo.length
               var inputs ,index;
               inputs = document.getElementsByClassName('user-status').length;
               for (index = 0; index < inputs; ++index) {
                     document.getElementsByClassName('user-status')[index].onclick = this.checkboxToggle
               }
-
         },
         methods:{
+            userEditSidebarEditButtonClick:function(ev){
+                ev.preventDefault();
+                this.$parent.isEdit = true
+                this.$parent.saveOredit = true
+            },
+            userEditSidebarSaveButtonClick: function(ev) {
+                ev.preventDefault();
+                this.$parent.isEdit = false
+                this.$parent.saveOredit = false
+                var data = [{
+                    firstName : this.$parent.firstname,
+                    lastName : this.$parent.lastname,
+                    userName : this.$parent.usernm,
+                    role:this.$parent.userrole,
+                    email:this.$parent.email,
+                    status:this.$parent.status,
+                    assingedGroup:this.$parent.assignedgroups,
+                    description:this.$parent.description
 
+                }]
+                alert("Data Save Successfully")
+                //TODO Send the above data in backend side for save
+            },
+            userEditSidebarDeleteButtonClick:function(ev){
+                ev.preventDefault();
+                alert("Delete User")
+            },
+            userEditSidebarCloseButtonClick:function(ev){
+                ev.preventDefault();
+                this.$parent.isEditButtonClick = true
+            },
             deleteButtonClick:function(ev){
+                ev.preventDefault();
                 var tr = ev.target.parentElement.parentElement;
-
                 alert("Deleting "+tr.cells[1].firstChild.innerText +" User")
             },
             editButtonClick: function(ev){
-
+                ev.preventDefault();
+                this.$parent.isEditButtonClick = false
+                this.$parent.hideSidebar = true
+                this.$parent.isEdit = false
+                this.$parent.saveOredit = false
                 var tr = ev.target.parentElement.parentElement;
                 this.username = tr.cells[1].firstChild.innerText;
-                var window = this.$children[3].$refs.windowRef.kendoWidget();
-                window.setOptions({title: this.username})
-                window.open();
+
+
+                document.querySelector("a[aria-label = 'Edit']").onclick = this.userEditSidebarEditButtonClick
+                document.querySelector("a[aria-label = 'Delete']").onclick = this.userEditSidebarDeleteButtonClick
+                document.querySelector("a[aria-label = 'Close']").onclick = this.userEditSidebarCloseButtonClick
+                document.querySelector("a[aria-label = 'Save']").onclick = this.userEditSidebarSaveButtonClick
+
             },
             toggleTemplate(){
                 let template =
@@ -105,7 +145,6 @@
 
             },
             userGridSearch() {
-
                 var searchText = this.searchUserText;
                 if(searchText != "" && searchText !=undefined) {
                     this.usersInfo = this.userGridFilter(searchText)
@@ -113,6 +152,7 @@
                 else{
                     this.usersInfo = this.tempUserInfo
                 }
+                this.userCount=this.usersInfo.length
             },
             checkboxToggle(){
                 //TODO Grid checkbox template event binding not working
