@@ -11,9 +11,6 @@ import { DataSource,HierarchicalDataSource,GanttDataSource,GanttDependencyDataSo
 import { Button,ButtonGroup,ButtonGroupButton,ToolBar,
     ToolBarItem,ButtonsInstaller } from '@progress/kendo-buttons-vue-wrapper'
 
-import { Window,WindowInstaller } from '@progress/kendo-window-vue-wrapper'
-
-
 //Plugins
 Vue.use(BootstrapVueLayout);
 Vue.use(BootstrapFormInputGroup);
@@ -24,4 +21,3 @@ Vue.use(BootstrapCard);
 Vue.use(ButtonsInstaller)
 Vue.use(DataSourceInstaller)
 Vue.use(GridInstaller)
-Vue.use(WindowInstaller)

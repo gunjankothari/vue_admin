@@ -3,9 +3,6 @@
 </template>
 
 <script>
-import '@progress/kendo-ui'
-import '@progress/kendo-theme-default/dist/all.css'
-
 export default {
     name: 'App'
 }

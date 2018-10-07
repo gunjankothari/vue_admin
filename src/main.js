@@ -3,28 +3,20 @@
 
 import Vue from 'vue'
 import 'es6-promise/auto';
-import Icon from 'vue-awesome/components/Icon'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
 import '@progress/kendo-ui'
-import '@progress/kendo-theme-default/dist/all.css'
-import store from './store';
+
+import Store from './store';
 import App from './App'
-import router from './router'
+import Router from './router'
 import './plugins'
 
-
 Vue.config.productionTip = false
-
-//Components
-Vue.component('icon', Icon)
-
 
 /* eslint-disable no-new */
 new Vue({
     el: '#app',
-    router,
-    store,
+    router: Router,
+    store: Store,
     components: { App },
     template: '<App/>'
 })
