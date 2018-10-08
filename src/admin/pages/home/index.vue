@@ -40,7 +40,7 @@ import breadcrumb from '../../components/breadcrumb';
         },
         computed: {
             cards(){
-                return this.$store.getters.cards
+                return this.$store.getters['admin/cards'];
             },
             filteredData() {
                 let cards = _.cloneDeep(this.cards);

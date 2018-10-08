@@ -3,7 +3,10 @@ import users from './modules/users';
 import navigation from './modules/navigations';
 
 export default {
-    grouping,
-    navigation,
-    users
+    modules: {
+        namespaced: true,
+        grouping,
+        navigation,
+        users
+    }
 };

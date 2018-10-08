@@ -5,8 +5,10 @@ import AdminStore from './admin/store/index';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-    namespaced: true,
     modules:{
-        ...AdminStore
+        admin: { 
+            ...AdminStore, 
+            namespaced: true 
+        }
     }
 })

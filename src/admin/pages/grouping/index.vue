@@ -17,13 +17,12 @@
 import * as _ from 'lodash';
 import breadcrumb from '../../components/breadcrumb';
 import treeViewRenderer from '../../components/treeView/index';
-import { mapGetters } from 'vuex';
 
     export default {
         computed:{
-            ...mapGetters([
-                'group'
-            ])
+            group(){
+                return this.$store.getters['admin/group'];
+            }
         },
         components: {
             breadcrumb,

@@ -186,10 +186,16 @@
             Breadcrumb,
             UsersInfoGrid
         },
+        computed: {
+            users(){
+                return this.$store.getters['admin/users'];
+            },
+            tempUserInfo(){
+                return this.$store.getters['admin/users'];
+            }
+        },
         data: function () {
             return {
-                users: this.$store.getters.users,
-                tempUserInfo: this.$store.getters.users,
                 hideSidebar: false,
                 isEditButtonClick:true,
                 isEdit:false,
