@@ -4,9 +4,8 @@ import navigation from './modules/navigations';
 
 export default {
     modules: {
-        namespaced: true,
         grouping,
-        navigation,
-        users
+        users,
+        navigation
     }
 };

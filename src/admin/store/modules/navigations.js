@@ -1,4 +1,4 @@
-import navigationData from '../../data/admin-data';
+import navigationData from '../data/admin-data';
 
 export default {
     state: {

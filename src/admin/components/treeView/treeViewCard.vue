@@ -30,8 +30,10 @@
 <script>
 import Vue from 'vue'
 import { mapMutations } from 'vuex';
+import 'vue-awesome/icons'
 
 export default {
+    name: 'treeViewCard',
     props: ['data', 'level', 'levelTrack', 'index'],
     data() {
         return {
@@ -40,7 +42,7 @@ export default {
     },
     methods:{
         ...mapMutations([
-            'ADD_GROUP_ITEM'
+            'admin/addGroupingItem'
         ]),
         itemClicked(item, index){
             this.$emit('itemClicked',{ 
@@ -59,7 +61,7 @@ export default {
             this.showNewInput = false;
         },
         addNew(){
-            this.ADD_GROUP_ITEM({ 
+            this.$store.commit('admin/addGroupingItem',{ 
                     label: document.getElementById('newInput').value,
                     levels: [...this.levelTrack],
                     addAtLevel: this.index

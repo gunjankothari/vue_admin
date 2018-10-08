@@ -8,7 +8,6 @@
 
 <script>
 
-import ADMIN_DATA from '../data/admin-data.js';
 export default {
     name:'breadcrumb',
     computed:{
@@ -19,7 +18,10 @@ export default {
                     'link': route.path
                 }    
             })
-        }
+        },
+        cards(){
+            return this.$store.getters['admin/cards'];
+        },
     },
     methods: {
         getRouteLabel(route){
@@ -32,7 +34,7 @@ export default {
             debugger;
             let current_route_item,
                 current_route_label;
-            const current_route = ADMIN_DATA.find( object => {
+            const current_route = this.cards.find( object => {
                 current_route_item =  object.items.find( item => {
                     if(item.link === current_route_link){
                         current_route_label = item.label;

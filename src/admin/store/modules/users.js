@@ -1,4 +1,4 @@
-import usersData from "../../data/users-data";
+import usersData from "../data/users-data";
 
 export default {
     state: {

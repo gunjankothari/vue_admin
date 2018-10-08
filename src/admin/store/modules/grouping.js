@@ -1,4 +1,4 @@
-import groupingData from "../../data/grouping-data";
+import groupingData from "../data/grouping-data";
 
 export default {
     state: {
