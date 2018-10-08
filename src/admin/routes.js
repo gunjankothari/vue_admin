@@ -1,5 +1,5 @@
 import AdminPage from './index.vue';
-import HomePage from './pages/home';
+import HomePage from './pages/home/index';
 
 // Lazy Loading Vue Components
 function loadView (view) {
@@ -11,13 +11,16 @@ export default [{
     name: 'Admin Settings',
     component: AdminPage,
     children: [{
+        name: 'Home',
         path: '/',
         component: HomePage,
     }, {
+        name: 'Grouping',
         path: 'grouping',
-        component: loadView('grouping')
+        component: loadView('grouping/index')
     }, {
+        name: 'Users',
         path: 'users',
-        component: loadView('users/users')
+        component: loadView('users/index')
     }]
 }]

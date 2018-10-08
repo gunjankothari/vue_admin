@@ -188,8 +188,8 @@
         },
         data: function () {
             return {
-                users: this.$store.state.usersStore.state.users,
-                tempUserInfo: this.$store.state.usersStore.state.users,
+                users: this.$store.getters.users,
+                tempUserInfo: this.$store.getters.users,
                 hideSidebar: false,
                 isEditButtonClick:true,
                 isEdit:false,

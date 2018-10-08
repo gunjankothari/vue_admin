@@ -15,8 +15,8 @@
 
 <script>
 import * as _ from 'lodash';
-import breadcrumb from '../components/breadcrumb';
-import treeViewRenderer from '../components/treeView/index';
+import breadcrumb from '../../components/breadcrumb';
+import treeViewRenderer from '../../components/treeView/index';
 import { mapGetters } from 'vuex';
 
     export default {

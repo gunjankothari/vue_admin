@@ -23,9 +23,9 @@ import * as _ from 'lodash';
 import 'vue-awesome/icons';
 import { mapGetters } from 'vuex';
 
-import searchBox from '../components/searchBox';
-import adminCard from '../components/card';
-import breadcrumb from '../components/breadcrumb';
+import searchBox from '../../components/searchBox';
+import adminCard from '../../components/card';
+import breadcrumb from '../../components/breadcrumb';
 
     export default {
         data() {
@@ -39,6 +39,9 @@ import breadcrumb from '../components/breadcrumb';
             breadcrumb
         },
         computed: {
+            cards(){
+                return this.$store.getters.cards
+            },
             filteredData() {
                 let cards = _.cloneDeep(this.cards);
                 const search = this.searchText;
@@ -51,10 +54,8 @@ import breadcrumb from '../components/breadcrumb';
                     });
                     return card.items.length > 0;
                 });
-            },
-            ...mapGetters({
-                'cards':'cards'
-            })
+            }
+            
         },
         methods:{
             searchHandler(value){

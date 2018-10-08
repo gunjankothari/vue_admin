@@ -1,16 +1,11 @@
-import groupingData from "./data/grouping-data";
-import adminData from './data/admin-data';
-import usersStore from './pages/users/users-store';
+import groupingData from "../../data/grouping-data";
 
 export default {
-    store: {
+    state: {
         groupingData,
-        adminData,
-        usersStore
     },
     mutations: {
-        ADD_GROUP_ITEM: (state, item) => {
-            console.log(item.levels)
+        addGroupingItem: (state, item) => {
             let arr = getGroup(state.groupingData, item.levels, item.addAtLevel);
             arr.push({
                 label: item.label,
@@ -18,15 +13,11 @@ export default {
             });
         }
     },
-    actions: {
-
-    },
     getters: {
-        cards: state => state.adminData,
         group: state => state.groupingData,
     },
 
-}
+};
 const getGroup = (items, levels, addAtLevel) => {
     if (levels.length > 0 && addAtLevel > 0) {
         const child = items[levels[0]].child;

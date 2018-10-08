@@ -10,6 +10,8 @@ import App from './App'
 import Router from './router'
 import './plugins'
 
+console.log(Store);
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

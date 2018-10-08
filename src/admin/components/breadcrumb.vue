@@ -10,6 +10,7 @@
 
 import ADMIN_DATA from '../data/admin-data.js';
 export default {
+    name:'breadcrumb',
     computed:{
         currentRoute(){        
             return this.$route.matched.map( route => { 
