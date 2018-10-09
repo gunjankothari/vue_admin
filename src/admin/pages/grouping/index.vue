@@ -7,28 +7,31 @@
         </b-row>
         <b-row>
             <b-col>
-                <tree-view-renderer :data="group"></tree-view-renderer>
+                <tree-view-renderer :data="groups"></tree-view-renderer>
             </b-col>
         </b-row>
     </b-container>
 </template>
 
 <script>
-import * as _ from 'lodash';
 import breadcrumb from '../../components/breadcrumb';
 import treeViewRenderer from '../../components/treeView/index';
 
-    export default {
-        computed:{
-            group(){
-                return this.$store.getters['admin/group'];
-            }
-        },
-        components: {
-            breadcrumb,
-            treeViewRenderer
+export default {
+    created(){
+        this.$store.dispatch('admin/fetchGroups');
+    },
+    computed:{
+        groups(){
+            console.log(this.$store.getters['admin/groups']);
+            return this.$store.getters['admin/groups'];
         }
+    },
+    components: {
+        breadcrumb,
+        treeViewRenderer
     }
+}
 </script>
 
 <style lang="less" scoped>

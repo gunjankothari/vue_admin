@@ -20,6 +20,7 @@ export default {
             })
         },
         cards(){
+            debugger;
             return this.$store.getters['admin/cards'];
         },
     },
@@ -44,7 +45,10 @@ export default {
                 return current_route_item ? true : false;
             });
 
-            return `${current_route.header} / ${current_route_label}`;
+            if(current_route)
+                return `${current_route.header} / ${current_route_label}`;
+            else
+                return;
         }
     }
 }

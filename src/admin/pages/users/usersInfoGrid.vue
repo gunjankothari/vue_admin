@@ -3,7 +3,7 @@
         <b-container fluid class="container-main">
             <b-row>
                 <b-col lg="12" md="9" sm="9">
-                    Showing {{userCount}} users of LDAP Users Group
+                    Showing {{filteredUsers.length}} users of LDAP Users Group
                 </b-col>
             </b-row><br>
             <b-row>
@@ -15,7 +15,7 @@
             </b-row>
         </b-container>
         <div id="vueapp" class="vue-app" >
-            <kendo-datasource ref="localDataSource" :data="usersInfo">
+            <kendo-datasource ref="localDataSource" :data="filteredUsers">
             </kendo-datasource>
 
             <kendo-grid
@@ -67,13 +67,21 @@
         data () {
             return {
                 searchUserText:'',
-                usersInfo : this.users,
                 username:'',
                 userCount:0
             }
         },
+        computed:{
+            filteredUsers(){
+                var searchText = this.searchUserText;
+                if(searchText != "" && searchText !=undefined) {
+                    debugger;
+                    return this.userGridFilter(searchText, this.users)
+                }
+                return this.users;
+            }
+        },
         mounted() {
-            this.userCount=this.usersInfo.length
               var inputs ,index;
               inputs = document.getElementsByClassName('user-status').length;
               for (index = 0; index < inputs; ++index) {
@@ -144,24 +152,14 @@
                 return compiledTemplate.bind(this);
 
             },
-            userGridSearch() {
-                var searchText = this.searchUserText;
-                if(searchText != "" && searchText !=undefined) {
-                    this.usersInfo = this.userGridFilter(searchText)
-                }
-                else{
-                    this.usersInfo = this.tempUserInfo
-                }
-                this.userCount=this.usersInfo.length
-            },
             checkboxToggle(){
                 //TODO Grid checkbox template event binding not working
                 alert("Checkbox Toggle !!!")
             },
-            userGridFilter(searchText) {
+            userGridFilter(searchText, users) {
                 const searchCriteria = ['UserName', 'Role', 'AssignedGroups', 'Email', 'Description'];
                 const searchTextLower = searchText.toLowerCase();
-                return this.tempUserInfo.filter( user => {
+                return users.filter( user => {
                     return searchCriteria.some( field => {
                         return user[field].toLowerCase().indexOf(searchTextLower) > -1
                     });

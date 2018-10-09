@@ -18,6 +18,9 @@
   import FooterComponent from '@/common/components/footer';
 
   export default {
+    created(){
+      this.$store.dispatch('admin/fetchNavigations');
+    },
     components: {
       'main-layout': MainLayout,
       'header-component': HeaderComponent,

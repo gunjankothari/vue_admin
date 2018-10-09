@@ -27,42 +27,42 @@ import searchBox from '../../components/searchBox';
 import adminCard from '../../components/card';
 import breadcrumb from '../../components/breadcrumb';
 
-    export default {
-        data() {
-            return {
-                searchText: ''
+export default {
+    data() {
+        return {
+            searchText: ''
+        }
+    },
+    components: {
+        searchBox,
+        adminCard,
+        breadcrumb
+    },
+    computed: {
+        cards(){
+            return this.$store.getters['admin/cards'];
+        },
+        filteredData() {
+            let cards = _.cloneDeep(this.cards);
+            const search = this.searchText;
+            if(!search){
+                return cards;
             }
-        },
-        components: {
-            searchBox,
-            adminCard,
-            breadcrumb
-        },
-        computed: {
-            cards(){
-                return this.$store.getters['admin/cards'];
-            },
-            filteredData() {
-                let cards = _.cloneDeep(this.cards);
-                const search = this.searchText;
-                if(!search){
-                    return cards;
-                }
-                return cards.filter( card => {
-                    card.items = card.items.filter( item => {
-                        return item.label.toLowerCase().indexOf(search.toLowerCase()) >= 0
-                    });
-                    return card.items.length > 0;
+            return cards.filter( card => {
+                card.items = card.items.filter( item => {
+                    return item.label.toLowerCase().indexOf(search.toLowerCase()) >= 0
                 });
-            }
-            
-        },
-        methods:{
-            searchHandler(value){
-                this.searchText = value;
-            }
+                return card.items.length > 0;
+            });
+        }
+        
+    },
+    methods:{
+        searchHandler(value){
+            this.searchText = value;
         }
     }
+}
 </script>
 
 <style lang="less" scoped>

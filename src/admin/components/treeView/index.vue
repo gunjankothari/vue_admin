@@ -16,7 +16,6 @@ import treeView from './treeViewCard';
     export default {
         data() {
             return {
-                groups: [],
                 levelTrack: [0]
             }
         },
@@ -36,8 +35,10 @@ import treeView from './treeViewCard';
                 
             }
         },
-        created(){
-            this.groups = [this.data];
+        computed:{
+            groups(){
+                return [this.data];
+            }
         }
     }
 </script>

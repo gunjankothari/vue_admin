@@ -54,7 +54,6 @@
                                     <a role="button" href="#" class="k-button k-bare k-button-icon k-window-action" aria-label="Edit" v-show='!saveOredit' ><span class="k-icon k-i-edit"></span></a>
                                     <a role="button" href="#" class="k-button k-bare k-button-icon k-window-action" aria-label="Delete"><span class="k-icon k-i-delete"></span></a>
                                     <a role="button" href="#" class="k-button k-bare k-button-icon k-window-action" aria-label="Close"><span class="k-icon k-i-close"></span></a>
-
                                 </b-col>
                             </b-row><hr><br>
                             <b-row>
@@ -128,7 +127,6 @@
                             </b-row>
                             <b-row>
                                 <b-col lg="6" md="12" sm="12" >
-
                                     <div v-show='!isEdit'><label><b>{{assignedgroups}}</b></label></div>
                                     <div v-show='isEdit'><input type="text" v-model="assignedgroups"/></div>
                                 </b-col>
@@ -154,7 +152,6 @@
                                 <b-col lg="6" md="12" sm="12" >
                                     <div v-show='!isEdit'><label><b>{{description}}</b></label></div>
                                     <div v-show='isEdit'><input type="text" v-model="description"/></div>
-
                                 </b-col>
                             </b-row>
                         </b-container>
@@ -186,8 +183,11 @@
             Breadcrumb,
             UsersInfoGrid
         },
+        created(){
+            this.$store.dispatch('admin/fetchUsers')
+        },
         computed: {
-            users(){
+            users(){              
                 return this.$store.getters['admin/users'];
             },
             tempUserInfo(){
