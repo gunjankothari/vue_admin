@@ -13,7 +13,7 @@ export default {
     computed:{
         currentRoute(){        
             return this.$route.matched.map( route => { 
-                return{
+                return {
                     'label': this.getRouteLabel(route),
                     'link': route.path
                 }    
@@ -31,7 +31,6 @@ export default {
             if(current_route_link === 'admin' || current_route_link === '')
                 return route.name;
 
-            debugger;
             let current_route_item,
                 current_route_label;
             const current_route = this.cards.find( object => {

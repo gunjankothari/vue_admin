@@ -5,8 +5,8 @@ import {
 import Vuex from 'vuex';
 import BootstrapVue from 'bootstrap-vue'
 
-import UsersPage from '@/admin/pages/users/users';
-import usersData from '@/admin/data/users-data';
+import UsersPage from '@/admin/pages/users/index';
+import usersData from '@/admin/store/data/users-data';
 
 const localVue = createLocalVue();
 
@@ -15,25 +15,30 @@ localVue.use(BootstrapVue);
 
 describe('Admin Users Page Testing', () => {
     let wrapper;
-    let store, getters;
+    let store;
 
     beforeEach(() => {
         store = new Vuex.Store({
-            store: {
-                usersData
-            },
             state: {
                 users: usersData
             },
+            getters: {
+                'admin/users': state => state.users
+            }
         })
-    })
-
-    it('Admin Users Page is Vue Instance', function () {
         wrapper = shallowMount(UsersPage, {
             localVue,
             store
         })
-        expect(wrapper.isVueInstance()).toBeTruthy();
-
     })
+
+    it('Admin Users Page is Vue Instance', function () {
+        expect(wrapper.isVueInstance()).toBeTruthy();
+    })
+
+    it('should toggle sidebar', () => {
+        expect(wrapper.vm.hideSidebar).toBe(false)
+        wrapper.vm.toggleSidebar();
+        expect(wrapper.vm.hideSidebar).toBe(true)
+    });
 });

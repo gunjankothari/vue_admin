@@ -5,8 +5,8 @@ import {
 import Vuex from 'vuex';
 import BootstrapVue from 'bootstrap-vue'
 
-import HomePage from '@/admin/pages/home';
-import adminData from '@/admin/data/admin-data';
+import HomePage from '@/admin/pages/home/index';
+import adminData from '@/admin/store/data/admin-data';
 
 const localVue = createLocalVue();
 
@@ -15,19 +15,18 @@ localVue.use(BootstrapVue);
 
 describe('Admin Home Page Testing', () => {
     let wrapper;
-    let store, getters;
+    let store;
 
     beforeEach(() => {
-        getters = {
-            cards: () => adminData,
-        }
-
         store = new Vuex.Store({
-            getters
-        })
-    })
-    
-    it('Admin Home Page is Vue Instance', function(){
+            state: {
+                cards: adminData
+            },
+            getters: {
+                'admin/cards': state => state.cards
+            }
+        });
+
         wrapper = shallowMount(HomePage, {
             localVue,
             store,
@@ -36,9 +35,16 @@ describe('Admin Home Page Testing', () => {
                     searchText: ''
                 }
             }
-        })
-        expect(wrapper.isVueInstance()).toBeTruthy();
+        });
 
+    })
+    
+    it('Admin Home Page is Vue Instance', function(){
+        
+        expect(wrapper.isVueInstance()).toBeTruthy();
+    });
+
+    it('Should have search for Users', function () {
         expect(wrapper.vm.filteredData.length).toBe(7);
 
         wrapper.setData({
