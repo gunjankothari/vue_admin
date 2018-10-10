@@ -2,7 +2,8 @@ import axios from 'axios';
 
 export default {
     state: {
-        navigation: []
+        navigation: [],
+            loading: false
     },
     mutations:{
         isLoading(state, payload) {

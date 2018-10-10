@@ -3,6 +3,7 @@ import axios from 'axios';
 export default {
     state: {
         groups: [],
+        loading: false
     },
     mutations: {
         isLoading(state, payload) {

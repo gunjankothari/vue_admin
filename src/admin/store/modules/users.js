@@ -2,7 +2,8 @@ import axios from 'axios';
 
 export default {
     state: {
-        users: []
+        users: [],
+        loading: false
     },
     mutations:{
         isLoading(state, payload){
@@ -23,9 +24,9 @@ export default {
                     return users;
                 })
                 .catch( err => console.error(err))
-                .finally(() => {
-                    context.commit('isLoading', false)
-                });
+                // .finally(() => {
+                //     context.commit('isLoading', false)
+                // });
         }
     },
     getters: {

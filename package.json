@@ -37,10 +37,10 @@
         "vuex": "^3.0.1"
     },
     "devDependencies": {
-        "@vue/test-utils": "^1.0.0-beta.25",
-        "autoprefixer": "^7.1.2",
         "@babel/core": "*",
         "@babel/preset-env": "*",
+        "@vue/test-utils": "^1.0.0-beta.25",
+        "autoprefixer": "^7.1.2",
         "babel-core": "^6.22.1",
         "babel-eslint": "^8.2.1",
         "babel-helper-vue-jsx-merge-props": "^2.0.3",
@@ -68,6 +68,7 @@
         "friendly-errors-webpack-plugin": "^1.6.1",
         "html-webpack-plugin": "^2.30.1",
         "jest": "^23.6.0",
+        "jest-mock-axios": "^2.1.11",
         "jest-serializer-vue": "^2.0.2",
         "jest-transform-stub": "^1.0.0",
         "less": "^3.0.4",
