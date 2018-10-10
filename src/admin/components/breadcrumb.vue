@@ -11,16 +11,15 @@
 export default {
     name:'breadcrumb',
     computed:{
-        currentRoute(){        
-            return this.$route.matched.map( route => { 
+        currentRoute(){
+            return this.$route.matched.map( route => {
                 return {
                     'label': this.getRouteLabel(route),
                     'link': route.path
-                }    
+                }
             })
         },
         cards(){
-            debugger;
             return this.$store.getters['admin/cards'];
         },
     },
@@ -28,7 +27,7 @@ export default {
         getRouteLabel(route){
             const routeLinks = route.path.split('/');
             const current_route_link = routeLinks[routeLinks.length -1];
-            
+
             if(current_route_link === 'admin' || current_route_link === '')
                 return route.name;
 
@@ -72,7 +71,7 @@ export default {
                 text-decoration: none
             }
 
-            &:not(:last-child){                
+            &:not(:last-child){
                 &:after{
                     content: '>';
                 }

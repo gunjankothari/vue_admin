@@ -51,11 +51,11 @@ describe('Admin User Store', () => {
                 data: UserData
             })
         );
-        const response = await UserStore.actions.fetchUsers({commit})                
+        const response = await UserStore.actions.fetchUsers({commit})
         expect(mockAxios.get).toHaveBeenCalledTimes(1);
-        expect(mockAxios.get).toHaveBeenCalledWith("https://api.myjson.com/bins/qy6ho")
+        expect(mockAxios.get).toHaveBeenCalledWith("https://api.myjson.com/bins/luhu4")
         expect(response.length).toEqual(state.users.length);
-    }) 
+    })
 
     it('Should throw an error while fetching users', async () => {
         mockAxios.get(() =>

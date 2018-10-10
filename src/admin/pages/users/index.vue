@@ -18,20 +18,25 @@
                                     </b-input-group>
                                 </b-col>
                             </b-row>
-                            <b-row>
+                            <b-row v-for="(user, index) in userTypeList" :key="index">
                                 <b-col lg="12" md="12" sm="12" >
-                                    <label><router-link :to="{ path: '/admin/users' }" replace>System User(14)</router-link> </label>
+                                    <label><router-link :to="{ path: user.path }" replace>{{user.text}}({{users.length}})</router-link></label>
+
+
                                 </b-col>
-                            </b-row>
-                            <b-row>
-                                <b-col lg="12" md="12" sm="12" >
-                                    <label><router-link :to="{ path: '/admin/users' }" replace>LDAP User(23)</router-link></label>
-                                </b-col>
-                            </b-row>
-                            <b-row>
-                                <b-col lg="12" md="12" sm="12" >
-                                    <label><router-link :to="{ path: '/admin/users' }" replace>Radis User(4)</router-link></label>
-                                </b-col>
+                                <!-- <b-col lg="12" md="12" sm="12" >
+                                     <label><router-link :to="{ path: '/admin/users' }" replace>System User(14)</router-link> </label>
+                                 </b-col>
+                             </b-row>
+                             <b-row>
+                                 <b-col lg="12" md="12" sm="12" >
+                                     <label><router-link :to="{ path: '/admin/users' }" replace>LDAP User(23)</router-link></label>
+                                 </b-col>
+                             </b-row>
+                             <b-row>
+                                 <b-col lg="12" md="12" sm="12" >
+                                     <label><router-link :to="{ path: '/admin/users' }" replace>Radis User(4)</router-link></label>
+                                 </b-col>-->
                             </b-row>
                         </b-container>
                     </div>
@@ -164,17 +169,6 @@
 
 <script>
 
-    const tempUserList = [{
-        path:'admin/user',
-        text :'System Users'
-    },{
-        path:'admin/user',
-        text :'LDAP Users'
-    },{
-        path:'admin/user',
-        text :'Radis Users'
-    }]
-
     import * as _ from 'lodash';
     import Breadcrumb from '../../components/breadcrumb';
     import UsersInfoGrid from './usersInfoGrid'
@@ -187,11 +181,15 @@
             this.$store.dispatch('admin/fetchUsers')
         },
         computed: {
-            users(){              
+            users(){
                 return this.$store.getters['admin/users'];
             },
             tempUserInfo(){
                 return this.$store.getters['admin/users'];
+            },
+            userTypeList(){
+
+                return this.$store.getters['admin/usersList']
             }
         },
         data: function () {
@@ -208,7 +206,7 @@
                 firstname:'Rahul',
                 lastname:'Patel',
                 usernm:'RahulPatel',
-                userList : tempUserList,
+                userid:'',
             }
         },
         methods: {

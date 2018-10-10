@@ -9,7 +9,7 @@
             <b-row>
                 <b-col lg="2" md="9" sm="9" class="col-xs-12 col-sm-6 col-md-3 example-col" style="padding-left: 0;">
                     <b-input-group size="md" class="mb-3 search-box " >
-                        <b-form-input id="search-textbox" placeholder="Search users..." v-model="searchUserText" @keyup.native="userGridSearch()"></b-form-input>
+                        <b-form-input id="search-textbox" placeholder="Search users..." v-model="searchUserText" @keyup="filteredUsers"></b-form-input>
                     </b-input-group>
                 </b-col>
             </b-row>
@@ -35,6 +35,8 @@
                 :excel-filterable="true"
             >
                 <kendo-grid-column :selectable="true" :width="35"></kendo-grid-column>
+                <kendo-grid-column :field="'UserId'" :hidden="true"
+                                   :width="180"></kendo-grid-column>
                 <kendo-grid-column :field="'UserName'"
                                    :template="this.toggleTemplate()"
                                    :width="180"></kendo-grid-column>
@@ -73,9 +75,10 @@
         },
         computed:{
             filteredUsers(){
+
                 var searchText = this.searchUserText;
                 if(searchText != "" && searchText !=undefined) {
-                    debugger;
+
                     return this.userGridFilter(searchText, this.users)
                 }
                 return this.users;
@@ -95,20 +98,26 @@
                 this.$parent.saveOredit = true
             },
             userEditSidebarSaveButtonClick: function(ev) {
+
                 ev.preventDefault();
                 this.$parent.isEdit = false
                 this.$parent.saveOredit = false
+
                 var data = [{
+                    userid: this.$parent.userid,
                     firstName : this.$parent.firstname,
                     lastName : this.$parent.lastname,
                     userName : this.$parent.usernm,
                     role:this.$parent.userrole,
                     email:this.$parent.email,
-                    status:this.$parent.status,
+                    status:this.$parent.isuserenable,
                     assingedGroup:this.$parent.assignedgroups,
                     description:this.$parent.description
 
                 }]
+                this.$store.dispatch('admin/editUser', data)
+
+                this.$refs.localDataSource.kendoDataSource.data(this.$store.getters['admin/users'])
                 alert("Data Save Successfully")
                 //TODO Send the above data in backend side for save
             },
@@ -123,23 +132,39 @@
             deleteButtonClick:function(ev){
                 ev.preventDefault();
                 var tr = ev.target.parentElement.parentElement;
-                alert("Deleting "+tr.cells[1].firstChild.innerText +" User")
+                this.$store.dispatch('admin/deleteUser', parseInt(tr.cells[1].firstChild.textContent))
             },
             editButtonClick: function(ev){
+
                 ev.preventDefault();
                 this.$parent.isEditButtonClick = false
                 this.$parent.hideSidebar = true
                 this.$parent.isEdit = false
                 this.$parent.saveOredit = false
                 var tr = ev.target.parentElement.parentElement;
-                this.username = tr.cells[1].firstChild.innerText;
 
+                this.userid = tr.cells[1].firstChild.textContent
+
+                var editUser = this.$store.getters['admin/getUserByUserName'](this.userid)
+                this.setEditUserData(editUser)
 
                 document.querySelector("a[aria-label = 'Edit']").onclick = this.userEditSidebarEditButtonClick
                 document.querySelector("a[aria-label = 'Delete']").onclick = this.userEditSidebarDeleteButtonClick
                 document.querySelector("a[aria-label = 'Close']").onclick = this.userEditSidebarCloseButtonClick
                 document.querySelector("a[aria-label = 'Save']").onclick = this.userEditSidebarSaveButtonClick
 
+            },
+            setEditUserData(editUser){
+
+                this.$parent.userid = editUser.UserId
+                this.$parent.firstname = editUser.UserName
+                this.$parent.lastname = editUser.UserName
+                this.$parent.usernm = editUser.UserName
+                this.$parent.userrole = editUser.Role
+                this.$parent.description = editUser.Description
+                this.$parent.assignedgroups = editUser.AssignedGroups
+                this.$parent.isuserenable = editUser.Status
+                this.$parent.email = editUser.Email
             },
             toggleTemplate(){
                 let template =
@@ -156,6 +181,7 @@
                 //TODO Grid checkbox template event binding not working
                 alert("Checkbox Toggle !!!")
             },
+
             userGridFilter(searchText, users) {
                 const searchCriteria = ['UserName', 'Role', 'AssignedGroups', 'Email', 'Description'];
                 const searchTextLower = searchText.toLowerCase();
