@@ -64,7 +64,7 @@ describe('Admin User Store', () => {
             });
     })
 
-    // it('should not update uselist', () => {
-    //     expect(store.getters['users'].length).toBe(0);
-    // })
+    it('should not update uselist', () => {
+        expect(store.getters['users'].length).toBe(0);
+    })
 })
