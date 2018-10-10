@@ -188,7 +188,6 @@
                 return this.$store.getters['admin/users'];
             },
             userTypeList(){
-
                 return this.$store.getters['admin/usersList']
             }
         },
