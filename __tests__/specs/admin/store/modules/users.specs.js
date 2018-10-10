@@ -4,7 +4,7 @@ import {
     createLocalVue
 } from '@vue/test-utils'
 import VueRouter from 'vue-router'
-//import mockAxios from 'jest-mock-axios';
+import mockAxios from 'axios';
 
 import UserStore from '@/admin/store/modules/users'
 import UserData from '@/admin/store/data/users-data'
@@ -15,7 +15,7 @@ localVue.use(Vuex);
 
 describe('Admin User Store', () => {
 
-    let store;
+    let store, commit, state;
 
     afterEach(() => {
         // cleaning up the mess left behind the previous test
@@ -24,6 +24,16 @@ describe('Admin User Store', () => {
 
     beforeEach(()=>{
         store = new Vuex.Store(UserStore);
+
+        state = {
+            users: [],
+            loading: false
+        }
+
+        commit = (action, payload) => {
+            UserStore.mutations[action](state, payload);
+        }
+
     })
 
     it('isLoading mutation', () => {
@@ -34,30 +44,35 @@ describe('Admin User Store', () => {
         expect(state.loading).toBe(false)
     })
 
-    it('should get data from API and commit new use list to vuex', async () => {
-        let catchFn = jest.fn(),
-            thenFn = jest.fn();
+    it('should get users from API and commit new use list to vuex', async () => {
 
-        let state = {
-            users: [],
-            loading: false
-        }
-        
-        let commit = (action, payload) => {
-            UserStore.mutations[action](state, payload);
-        }
-        UserStore.actions.fetchUsers({commit})
-            .then( res => {
-                expect(thenFn).toBeCalledWith(UserData);
-                expect(state.users.length).toBe(20);
-                expect(state.loading).toBe(false);
+        mockAxios.get.mockImplementationOnce(() =>
+            Promise.resolve({
+                data: UserData
             })
-            .catch( () => {
-                expect(thenFn).toBeCalledWith(UserData);
+        );
+        const response = await UserStore.actions.fetchUsers({commit})                
+        expect(mockAxios.get).toHaveBeenCalledTimes(1);
+        expect(mockAxios.get).toHaveBeenCalledWith("https://api.myjson.com/bins/qy6ho")
+        expect(response.length).toEqual(state.users.length);
+    }) 
+
+    it('Should throw an error while fetching users', async () => {
+        mockAxios.get(() =>
+            Promise.reject()
+        );
+        UserStore.actions.fetchUsers({ commit })
+            .then( response => {
+                expect(mockAxios.get).toHaveBeenCalled();
+                expect(state.users.length).toEqual(0);
             })
+            .catch(error => {
+                console.log(error)
+                expect(state.users.length).toEqual(0);
+            });
     })
 
-    it('should get the userlist', () => {
+    it('should not update uselist', () => {
         expect(store.getters['users'].length).toBe(0);
     })
 })

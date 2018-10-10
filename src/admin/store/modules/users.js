@@ -21,9 +21,11 @@ export default {
                 .then( res => {
                     const users = res.data
                     context.commit('setUsers', users);
-                    return users;
+                    return users; 
                 })
-                .catch( err => console.error(err))
+                .catch( err => { 
+                    return err;
+                })
                 // .finally(() => {
                 //     context.commit('isLoading', false)
                 // });
