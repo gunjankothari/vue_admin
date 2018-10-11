@@ -22,7 +22,7 @@
                 :height="500"
                 :data-source-ref="'localDataSource'"
                 :resizable="true"
-                :filterable="true"
+                :filterable="false"
                 :sortable-allow-unsort="true"
                 :sortable-show-indexes="true"
                 :scrollable-virtual="true"
@@ -69,21 +69,19 @@
         data () {
             return {
                 searchUserText:'',
-                username:'',
-                userCount:0
             }
         },
         computed:{
+            /*=========== This method used to filter user listing grid data ==========*/
             filteredUsers(){
-
                 var searchText = this.searchUserText;
                 if(searchText != "" && searchText !=undefined) {
-
                     return this.userGridFilter(searchText, this.users)
                 }
                 return this.users;
             }
         },
+        /*=========== This method used to bind the click event in grid switcher ==========*/
         mounted() {
               var inputs ,index;
               inputs = document.getElementsByClassName('user-status').length;
@@ -92,13 +90,14 @@
               }
         },
         methods:{
+            /*=========== This method is call when user click the edit button in edit sidebar panel  ==========*/
             userEditSidebarEditButtonClick:function(ev){
                 ev.preventDefault();
                 this.$parent.isEdit = true
                 this.$parent.saveOredit = true
             },
+            /*=========== This method is call when user click the save button in edit sidebar panel  ==========*/
             userEditSidebarSaveButtonClick: function(ev) {
-
                 ev.preventDefault();
                 this.$parent.isEdit = false
                 this.$parent.saveOredit = false
@@ -116,35 +115,34 @@
 
                 }]
                 this.$store.dispatch('admin/editUser', data)
-
                 this.$refs.localDataSource.kendoDataSource.data(this.$store.getters['admin/users'])
                 alert("Data Save Successfully")
-                //TODO Send the above data in backend side for save
             },
+            /*=========== This method is call when user click the delete button in edit sidebar panel  ==========*/
             userEditSidebarDeleteButtonClick:function(ev){
                 ev.preventDefault();
                 alert("Delete User")
             },
+            /*=========== This method is call when user click the close button in edit sidebar panel  ==========*/
             userEditSidebarCloseButtonClick:function(ev){
                 ev.preventDefault();
                 this.$parent.isEditButtonClick = true
             },
+            /*=========== This method is call when user click the delete button in user listing grid  ==========*/
             deleteButtonClick:function(ev){
                 ev.preventDefault();
                 var tr = ev.target.parentElement.parentElement;
                 this.$store.dispatch('admin/deleteUser', parseInt(tr.cells[1].firstChild.textContent))
             },
+            /*=========== This method is call when user click the edit button in user listing grid  ==========*/
             editButtonClick: function(ev){
-
                 ev.preventDefault();
                 this.$parent.isEditButtonClick = false
                 this.$parent.hideSidebar = true
                 this.$parent.isEdit = false
                 this.$parent.saveOredit = false
                 var tr = ev.target.parentElement.parentElement;
-
                 this.userid = tr.cells[1].firstChild.textContent
-
                 var editUser = this.$store.getters['admin/getUserByUserName'](this.userid)
                 this.setEditUserData(editUser)
 
@@ -152,10 +150,9 @@
                 document.querySelector("a[aria-label = 'Delete']").onclick = this.userEditSidebarDeleteButtonClick
                 document.querySelector("a[aria-label = 'Close']").onclick = this.userEditSidebarCloseButtonClick
                 document.querySelector("a[aria-label = 'Save']").onclick = this.userEditSidebarSaveButtonClick
-
             },
+            /*=========== This method is used for set the edit panel user data when user click edit button  ==========*/
             setEditUserData(editUser){
-
                 this.$parent.userid = editUser.UserId
                 this.$parent.firstname = editUser.UserName
                 this.$parent.lastname = editUser.UserName
@@ -166,6 +163,7 @@
                 this.$parent.isuserenable = editUser.Status
                 this.$parent.email = editUser.Email
             },
+            /*=========== This method return the user enable or disable switch  ==========*/
             toggleTemplate(){
                 let template =
                     `<label class="switch" >
@@ -177,11 +175,12 @@
                 return compiledTemplate.bind(this);
 
             },
+            /*=========== This method is call when user click the user enable disable switcher ==========*/
             checkboxToggle(){
                 //TODO Grid checkbox template event binding not working
                 alert("Checkbox Toggle !!!")
             },
-
+            /*=========== This method is call when user search records in grid  ==========*/
             userGridFilter(searchText, users) {
                 const searchCriteria = ['UserName', 'Role', 'AssignedGroups', 'Email', 'Description'];
                 const searchTextLower = searchText.toLowerCase();

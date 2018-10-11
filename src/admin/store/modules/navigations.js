@@ -16,7 +16,6 @@ export default {
     actions:{
         fetchNavigations(context, config) {
             context.commit('isLoading', true)
-            //http://myjson.com/175658
             return axios.get('https://api.myjson.com/bins/175658')
                 .then(res => {
                     const navigation = res.data

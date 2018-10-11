@@ -179,6 +179,7 @@
         },
         created(){
             this.$store.dispatch('admin/fetchUsers')
+            this.$store.dispatch('admin/fetchLeftSidebarUserList')
         },
         computed: {
             users(){
@@ -197,14 +198,14 @@
                 isEditButtonClick:true,
                 isEdit:false,
                 saveOredit:false,
-                email:'rahul@gmail.com',
+                email:'',
                 isuserenable:true,
-                assignedgroups:'Java Developer',
-                description:'Rahul is a java developer',
-                userrole:'Admin',
-                firstname:'Rahul',
-                lastname:'Patel',
-                usernm:'RahulPatel',
+                assignedgroups:'',
+                description:'',
+                userrole:'',
+                firstname:'',
+                lastname:'',
+                usernm:'',
                 userid:'',
             }
         },

@@ -4,16 +4,7 @@ export default {
     state: {
         users: [],
         loading: false,
-        leftSidebarUserList : [{
-            path:'users',
-            text :"System Users"
-        },{
-            path:'users',
-            text :'LDAP Users'
-        },{
-            path:'users',
-            text :'Radis Users'
-        }]
+        leftSidebarUserList : []
     },
     mutations:{
         isLoading(state, payload){
@@ -22,10 +13,12 @@ export default {
         setUsers(state, payload){
             state.users = payload
         },
-        EDIT_USER(state, editUser){
+        setLeftSidebarUserData(state,payload){
+            state.leftSidebarUserList = payload
+        },
+        editUser(state, editUser){
             state.users.forEach( user => {
                 if(user.UserId == editUser[0].userid){
-                    debugger
                     user.UserName = editUser[0].userName
                     user.Email = editUser[0].email
                     user.Role = editUser[0].role
@@ -35,8 +28,7 @@ export default {
                 }
             });
         },
-        DELETE_USER(state, userid){
-
+        deleteUser(state, userid){
             let i =  state.users.map(user => user.UserId).indexOf(userid) // find index of your object
             state.users.splice(i, 1)
         }
@@ -44,7 +36,6 @@ export default {
     actions:{
         fetchUsers(context, config){
             context.commit('isLoading', true)
-            //http://myjson.com/qy6ho
             return axios.get('https://api.myjson.com/bins/luhu4')
                 .then( res => {
                     const users = res.data
@@ -54,15 +45,24 @@ export default {
                 .catch( err => {
                     return err;
                 })
-                // .finally(() => {
-                //     context.commit('isLoading', false)
-                // });
+
+        },
+        fetchLeftSidebarUserList :(context)=>{
+            return axios.get('https://api.myjson.com/bins/18qgn8')
+                .then( res => {
+                    const users = res.data
+                    context.commit('setLeftSidebarUserData', users);
+                    return users;
+                })
+                .catch( err => {
+                    return err;
+                })
         },
         editUser({commit}, user){
-            commit('EDIT_USER', user)
+            commit('editUser', user)
         },
         deleteUser({commit}, userid){
-            commit('DELETE_USER', userid)
+            commit('deleteUser', userid)
         }
     },
     getters: {
